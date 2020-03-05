@@ -7,3 +7,7 @@ v
 asq
 :wq
  filter=lfs diff=lfs merge=lfs -text
+LexioProject/Library/PlayerDataCache/Win64/Data/resources.assets.resLexioProject/Library/PlayerDataCache/Win64/Data/resources.assets.res
+awd
+ filter=lfs diff=lfs merge=lfs -text
+LexioPJ/Library/PlayerDataCache/Win64/Data/resources.assets.resS filter=lfs diff=lfs merge=lfs -text
