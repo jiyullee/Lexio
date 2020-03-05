@@ -21,6 +21,7 @@ cee1424ee38c46d489da4f1d4f5e7268 Assembly-CSharp.dll:.GameManager_3Players
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 6bc5e6ffedf76f18a001e7b8b5d2fff8 Assembly-CSharp.dll:.CardManager
 2163458cae41cb1735c8b06fc34a9582 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.UserIdField
+6c9b6f5cb418545638f05c3023453530 Assembly-CSharp.dll:.GameManager_6Players
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -181,6 +182,7 @@ c656dcc13ae391b68d594cc8f9c590b0 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo
 a318a82d5abde553e75543c7b3aba918 XiaomiSupport.dll:AppStoresSupport.AppStoreSettings
 c656dcc13ae391b68d594cc8f9c590b0 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.CurrentRoomPlayerTtlProperty
 ad9694551f5c2b875974a99ef39d90a1 Assembly-CSharp.dll:.GameManager
+6c9b6f5cb418545638f05c3023453530 Assembly-CSharp.dll:.GameManager_5Players
 8e4575a3a56f991a24c01fa8dd2ef51c Assembly-CSharp.dll:.PlayerScript
 f941c3a384168571b7d90f58ec4986bc PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.InfosPanelPlaceholder
 71bb6a6b6c8f052f948db64c7dd3ca4f PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.CurrentRoomIsOpenToggle
@@ -277,7 +279,7 @@ c656dcc13ae391b68d594cc8f9c590b0 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo
 e10400e84c8c573b2b5e4088aca77453 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.PunBasics.PlayerManager
 a8d3c943d9168cbdd8596f040ff02ff4 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Asteroids.Asteroid
 ed96c6dfc2b38b9cfc650d541cf88f43 Assembly-CSharp.dll:.RoomManager
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LobbyNetwork
+c2f8393e8e36f0eb5c6714a2fea410ac Assembly-CSharp.dll:.LobbyNetwork
 9db963832ef7feebd35f44e6ad6f646c PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.OnJoinedInstantiate
 d7f7bc402888d42a0dbb080693e6863c PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.PunBasics.LoaderAnime
 ee0cef6caaac8ae485bfa82f000f0f7b Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
@@ -294,7 +296,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PlayerNetwork
 71bb6a6b6c8f052f948db64c7dd3ca4f PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Procedural.ProceduralController
 4b41b09e2ed9142891468f00556693b7 Assembly-CSharp.dll:.AuthManager
-ba35b2261438538f8c837267944ec190 Assembly-CSharp.dll:.RoomListing
+d68ff704186c3bc4d3ffdfc564c11ac7 Assembly-CSharp.dll:.RoomListing
 c5fd97cc10b89deaf7c60af66a6b0d5a PhotonRealtime.dll:Photon.Realtime.SupportLogger
 cee1424ee38c46d489da4f1d4f5e7268 Assembly-CSharp.dll:.GameManager_4Players
 3f600ad0f750f59238a91f7513b927c1 PhotonUnityNetworking.dll:Photon.Pun.PhotonTransformViewClassic
@@ -315,7 +317,7 @@ d1f07c9e64b7817e6271f80bb03de25f PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo
 5372ed2ce39229b1ac910757999a8be2 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 b89ca8c8ae7041500fa1df2b061f55c9 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.SlotRacer.Utils.Line
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
-53df19135d614c8f8ae31b4b4c1d3d01 Assembly-CSharp.dll:.Lobby_MainCanvasManager
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Lobby_MainCanvasManager
 c656dcc13ae391b68d594cc8f9c590b0 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.CurrentRoomAutoCleanupProperty
 27e66a5dde15946695b2926d0ab1ddcb PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.FriendListView
 c656dcc13ae391b68d594cc8f9c590b0 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.CurrentRoomPlayerCountProperty
@@ -336,5 +338,7 @@ f07d654754d37f82934d9057c671e9cc PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo
 c656dcc13ae391b68d594cc8f9c590b0 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.CountOfRoomsProperty
 f0c4eb24258257daca58a9939f0894d2 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Asteroids.LobbyTopPanel
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PokerManager
-6c9b6f5cb418545638f05c3023453530 Assembly-CSharp.dll:.GameManager_5Players
-6c9b6f5cb418545638f05c3023453530 Assembly-CSharp.dll:.GameManager_6Players
+e1ac39567167e8e0d08c75764df8a80b Assembly-CSharp.dll:.Lobby_ChatService
+ee3f779fc7295ffa9287f9857e09b87b Assembly-CSharp.dll:.Lobby_PlayerList
+f9ba6b38aac25ddfd23585c6a09752f0 Assembly-CSharp.dll:.Lobby_UserInfo
+a31f478f1fe2cb5097c719d2736d44cb Assembly-CSharp.dll:.Lobby_PlayerListing
