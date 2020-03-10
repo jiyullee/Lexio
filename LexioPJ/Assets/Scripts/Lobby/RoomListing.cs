@@ -12,7 +12,7 @@ public class RoomListing : MonoBehaviour
     public Text MasterNameText;
     public Text bettingAmountText;
     public Text stateText;
-
+    bool isClose;
     public string RoomName { get; private set; }
     public int MaxPlayerCount { get; private set; }
     public int CurrentPlayerCount { get; private set; }
@@ -21,7 +21,7 @@ public class RoomListing : MonoBehaviour
     void Start()
     {
         Button button = GetComponent<Button>();
-        button.onClick.AddListener(() => LobbyManager.Instance.OnClickJoinRoom(RoomNameText.text));
+        button.onClick.AddListener(() => LobbyManager.Instance.OnClickJoinRoom(RoomNameText.text, isClose));
     }
 
     private void OnDestroy()
@@ -30,8 +30,14 @@ public class RoomListing : MonoBehaviour
         button.onClick.RemoveAllListeners();
     }
 
-    public void ChangeRoomInfo()
+    public void ChangeRoomInfo(string roomName, string password, string masterName, int playerCount,int maxPlayer, string betting)
     {
-        //방 번호 방 이름 방장이름 인원 배팅액 상황 고치기
+        if (password != "")
+            isClose = true;
+        RoomNameText.text = roomName;
+        MasterNameText.text = masterName;
+        PlayerCountText.text = string.Format("{0}/{1}", playerCount, maxPlayer);
+        bettingAmountText.text = betting.ToString();
+
     }
 }

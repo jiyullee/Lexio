@@ -16,6 +16,10 @@ public class Lobby_MainCanvasManager : MonoBehaviour
     }
     private static Lobby_MainCanvasManager instance;
     public Lobby_ChatService chatService;
+    public Lobby_UserInfo UserInfo;
+    public Lobby_CreateRoom lobby_CreateRoom;
+    public Lobby_ChangeInfo lobby_ChangeInfo;
+    public Lobby_GameRule lobby_GameRule;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
@@ -24,4 +28,18 @@ public class Lobby_MainCanvasManager : MonoBehaviour
         }
     }
 
+    public void Onclick_AppearCreateRoomPanel()
+    {
+        lobby_CreateRoom.gameObject.SetActive(true);
+    }
+
+    public void Onclick_AppearChangeInfoPanel()
+    {
+        lobby_ChangeInfo.gameObject.SetActive(true);
+    }
+
+    public void Onclick_AppearGameRuleBtn()
+    {
+        lobby_GameRule.gameObject.SetActive(true);
+    }
 }

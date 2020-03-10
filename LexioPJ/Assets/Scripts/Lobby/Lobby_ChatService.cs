@@ -20,8 +20,7 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
     {
         Application.runInBackground = true;
         //  userName = System.Environment.UserName;
-        PhotonNetwork.LocalPlayer.NickName = "지율";
-        userName = PhotonNetwork.LocalPlayer.NickName;
+        userName = PlayerPrefs.GetString("Name");
         currentChannelName = "Channel 001";
 
         chatClient = new ChatClient(this);

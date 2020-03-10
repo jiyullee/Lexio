@@ -18,7 +18,8 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
     {
         get { return _roomListingButtons; }
     }
-
+    public Lobby_CreateRoom Lobby_CreateRoom;
+    
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         foreach (RoomInfo room in roomList)
@@ -48,8 +49,8 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         if (index != -1)
         {
             RoomListing roomListing = RoomListingButtons[index];
-            //
-            //방 정보 보내기
+            ExitGames.Client.Photon.Hashtable hashtable = room.CustomProperties;
+            roomListing.ChangeRoomInfo(room.Name, (string)hashtable["Password"], (string)hashtable["MasterName"], room.PlayerCount, room.MaxPlayers, (string)hashtable["Betting"]);
             roomListing.Updated = true;
         }
     }

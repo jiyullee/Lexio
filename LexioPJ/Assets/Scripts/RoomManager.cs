@@ -32,6 +32,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             }
             startBtn.gameObject.SetActive(false);
             RoomOptBtn.gameObject.SetActive(false);
+
         }
         else
         {
@@ -39,6 +40,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
             RoomOptBtn.gameObject.SetActive(true);
         }
         SpawnPlayer();
+
+        
     }
 
     void SpawnPlayer()

@@ -7,7 +7,6 @@ using Photon.Realtime;
 public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     private readonly string gameVersion = "1";
-    public Lobby_PlayerList Lobby_PlayerList;
     void Start()
     {
         PhotonNetwork.GameVersion = gameVersion;
@@ -22,7 +21,6 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnConnectedToMaster()
     {
         print("Connected to Master");
-        PhotonNetwork.LocalPlayer.NickName = "지율";
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
@@ -35,12 +33,5 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnJoinedLobby()
     {
         print("Connected in lobby");
-        Lobby_PlayerList.AddPlayer(PhotonNetwork.LocalPlayer.NickName);
     }
-
-    public override void OnLeftLobby()
-    {
-        Lobby_PlayerList.RemovePlayer(PhotonNetwork.LocalPlayer.NickName);
-    }
-
 }

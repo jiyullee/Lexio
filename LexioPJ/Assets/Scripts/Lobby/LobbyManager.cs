@@ -15,15 +15,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             return instance;
         }
     }
-
+    
     private static LobbyManager instance;
-
-    private string NickName;
-
-    public InputField RoomName;
-    public InputField RoomPlayerCount;
-    public InputField InputPlayerNameText;
-
+    public GameObject passwordChecker;
+    InputField inputPassword;
     [SerializeField]
     private RoomLayoutGroup _roomLayoutGroup;
     private RoomLayoutGroup RoomLayoutGroup
@@ -31,24 +26,46 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         get { return _roomLayoutGroup; }
     }
 
-    void Start()
+    private void Start()
     {
+        inputPassword = passwordChecker.GetComponentInChildren<InputField>();
+    }
+    public void OnClick_CreateRoom(string roomName,  string password, int maxCount, string betting)
+    {
+        RoomOptions roomOptions = new RoomOptions { IsVisible = true, IsOpen = true, MaxPlayers = (byte)maxCount };
+        roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+
+        roomOptions.CustomRoomProperties.Add("RoomName", roomName);
+        roomOptions.CustomRoomProperties.Add("Password", password);
+        roomOptions.CustomRoomProperties.Add("MasterName", PhotonNetwork.LocalPlayer.NickName);
+        roomOptions.CustomRoomProperties.Add("Betting", betting);
+
+        roomOptions.CustomRoomPropertiesForLobby = new string[] {"RoomName", "Password", "MasterName", "Betting" };
+        roomOptions.PublishUserId = true;
+
+        if (PhotonNetwork.CreateRoom(roomName, roomOptions, TypedLobby.Default))
+        {
+            print("Create Room success");
+        }
+
     }
 
-    public void OnClick_CreateRoom()
+    public void OnClickJoinRoom(string roomName, bool isClose)
     {
-        int checkNum = 0;
-        if (int.TryParse(RoomPlayerCount.text, out checkNum))
+        if (!isClose)
         {
-            RoomOptions roomOptions = new RoomOptions { IsVisible = true, IsOpen = true, MaxPlayers = (byte)int.Parse(RoomPlayerCount.text) };
-
-            if(PhotonNetwork.CreateRoom(RoomName.text, roomOptions, TypedLobby.Default))
-            {
-                print("Create Room success");
-                
-            }
+            PhotonNetwork.JoinRoom(roomName);
         }
-        
+        else
+        {
+            passwordChecker.SetActive(true);
+            passwordChecker.GetComponent<Lobby_CheckPassword>().SetProperties(roomName);
+        }                 
+    }
+
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        base.OnJoinRandomFailed(returnCode, message);
     }
 
     public override void OnJoinedRoom()
@@ -56,14 +73,5 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("Room");
     }
 
-    public void OnClickJoinRoom(string roomName)
-    {
-        PhotonNetwork.JoinRoom(roomName);                   
-    }
-
-    public void OnClick_ChangeName()
-    {
-        NickName = InputPlayerNameText.text;
-        PhotonNetwork.LocalPlayer.NickName = NickName;
-    }
 }
+
