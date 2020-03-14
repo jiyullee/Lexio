@@ -11,25 +11,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public GameObject PlayerPrefab;
     public Button startBtn;
     public Button RoomOptBtn;
-    int statrIndex = 0;
-    int newStartIndex = 1;
+    static int spawnIndex = 0;
+    public Room_ChangeRoomInfo Room_ChangeRoomInfo;
+    public Room_ChatService Room_ChatService;
     void Start()
     {
-        int localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber;
 
         if (!PhotonNetwork.IsMasterClient)
         {
-            int playerIndex = 0;
-            for (int i = localPlayerIndex - 1; i > 0; i--)
-            {
-                var spawnPosition = playerListObj[statrIndex++ % playerListObj.Length];
-
-                GameObject obj = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnPosition.transform.position, spawnPosition.transform.rotation);
-                obj.transform.SetParent(spawnPosition.transform);
-                obj.GetComponent<Room_Player>().SetNameText(PhotonNetwork.PlayerListOthers[playerIndex].NickName);
-                obj.GetPhotonView().TransferOwnership(PhotonNetwork.PlayerListOthers[playerIndex]);
-                playerIndex++;
-            }
+            SpawnOtherPlayers();
             startBtn.gameObject.SetActive(false);
             RoomOptBtn.gameObject.SetActive(false);
 
@@ -40,22 +30,62 @@ public class RoomManager : MonoBehaviourPunCallbacks
             RoomOptBtn.gameObject.SetActive(true);
         }
         SpawnPlayer();
+        Room_ChangeRoomInfo.ChangeRoomNameText();
 
-        
+
     }
 
-    void SpawnPlayer()
+    private void SpawnOtherPlayers()
     {
-        var spawnPosition = playerListObj[statrIndex % playerListObj.Length];
+        for(int i = 0; i < PhotonNetwork.PlayerListOthers.Length; i++)
+        {
+            for (int j = 0; j < playerListObj.Length; j++)
+            {
+                if (playerListObj[j].transform.childCount == 0)
+                {
+                    spawnIndex = j;
+                    break;
+                }
+            }
+            var spawnPosition = playerListObj[spawnIndex % playerListObj.Length];
 
+            GameObject obj = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnPosition.transform.position, spawnPosition.transform.rotation);
+            obj.transform.SetParent(spawnPosition.transform);
+            obj.GetComponent<Room_Player>().SetNameText(PhotonNetwork.PlayerListOthers[i].NickName);
+            obj.GetPhotonView().TransferOwnership(PhotonNetwork.PlayerListOthers[i]);
+        }
+    }
+
+    private void SpawnPlayer()
+    {
+        for(int i = 0; i < playerListObj.Length; i++)
+        {
+            if (playerListObj[i].transform.childCount == 0)
+            {
+                spawnIndex = i;
+                break;
+            }
+        }
+        var spawnPosition = playerListObj[spawnIndex % playerListObj.Length];
+        
         GameObject obj = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnPosition.transform.position, spawnPosition.transform.rotation);
         obj.transform.SetParent(spawnPosition.transform);
-        obj.GetComponent<Room_Player>().SetNameText(PhotonNetwork.LocalPlayer.NickName);
+        obj.GetComponent<Room_Player>().SetNameText(PlayerPrefs.GetString("Name"));
+        obj.GetPhotonView().TransferOwnership(PhotonNetwork.LocalPlayer);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        var spawnPosition = playerListObj[newPlayer.ActorNumber - 1 % playerListObj.Length];
+        for (int i = 0; i < playerListObj.Length; i++)
+        {
+            if (playerListObj[i].transform.childCount == 0)
+            {
+                spawnIndex = i;
+                break;
+            }
+        }
+        var spawnPosition = playerListObj[spawnIndex % playerListObj.Length];
+
         GameObject obj = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnPosition.transform.position, spawnPosition.transform.rotation);
         obj.transform.SetParent(spawnPosition.transform);
         obj.GetComponent<Room_Player>().SetNameText(newPlayer.NickName);
@@ -64,7 +94,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public void OnClick_StartGame()
     {
+        photonView.RPC("RPC_DisConnectChatChannel", RpcTarget.All);
+
+        RoomInfo room = PhotonNetwork.CurrentRoom;
+        room.CustomProperties.Remove("State");
+        room.CustomProperties.Add("State", "게임 중");
+
         int playerCount = PhotonNetwork.PlayerList.Length;
+
         if(playerCount <= 2)
         {
             PhotonNetwork.LoadLevel("Game_2Players");
@@ -85,5 +122,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
             PhotonNetwork.LoadLevel("Game_6Players");
         }
 
+    }
+    [PunRPC]
+    private void RPC_DisConnectChatChannel()
+    {
+        Room_ChatService.DisConnectChannel();
     }
 }

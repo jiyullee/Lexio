@@ -21,11 +21,10 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
         Application.runInBackground = true;
         //  userName = System.Environment.UserName;
         userName = PlayerPrefs.GetString("Name");
-        currentChannelName = "Channel 001";
+        currentChannelName = "Lobby";
 
         chatClient = new ChatClient(this);
         chatClient.Connect("5f481764-8873-4402-a95c-7dfc0da35a4a", "1.0", new AuthenticationValues(userName));
-
         //AddLine(string.Format("연결시도", userName));
     }
 
@@ -34,6 +33,10 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
         outputText.text += lineString + "\r\n";
     }
 
+    public void DisConnectChannel()
+    {       
+        chatClient.Unsubscribe(new string[] { currentChannelName });
+    }
     public void OnApplicationQuit()
     {
         if(chatClient != null)
@@ -65,17 +68,14 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
 
     public void OnDisconnected()
     {
+        
         AddLine("서버와의 연결이 끊어졌습니다.");
     }
 
     public void OnGetMessages(string channelName, string[] senders, object[] messages)
     {
-        string s = "";
-        for (int i = 0; i < messages.Length; i++)
-        {
-            s += messages[i];
-        }
-        AddLine(string.Format("{0} : {1}", senders[0], s.ToString()));
+        if (channelName == currentChannelName)
+            AddLine(string.Format("{0} : {1}", senders[0], messages[0]));
     }
 
     public void OnPrivateMessage(string sender, object message, string channelName)
@@ -85,13 +85,14 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
 
     public void OnSubscribed(string[] channels, bool[] results)
     {
-        AddLine("Welcome to Lexio world!");
-        //AddLine(string.Format("채널 입장({0})", string.Join(",", channels)));
+        outputText.text = "";
+        //AddLine("Welcome to Lexio world!");
+        AddLine(string.Format("로비에 입장하셨습니다.", string.Join(",", currentChannelName)));
     }
 
     public void OnUnsubscribed(string[] channels)
     {
-        AddLine(string.Format("채널 퇴장({0})", string.Join(",", channels)));
+        //AddLine(string.Format("채널 퇴장({0})", string.Join(",", channels)));
     }
 
     public void OnStatusUpdate(string user, int status, bool gotMessage, object message)
@@ -106,7 +107,7 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
 
     public void OnUserUnsubscribed(string channel, string user)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     private void Update()

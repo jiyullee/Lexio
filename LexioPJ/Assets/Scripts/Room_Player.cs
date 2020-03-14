@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,14 @@ public class Room_Player : MonoBehaviourPun
         else
         {
             masterObj.SetActive(false);
+        }
+    }
+
+    public void LeftRoom(Player player)
+    {
+        if(photonView.Owner == player)
+        {
+            PhotonNetwork.Destroy(photonView);
         }
     }
 }

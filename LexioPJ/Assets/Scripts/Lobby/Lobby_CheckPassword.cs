@@ -32,7 +32,6 @@ public class Lobby_CheckPassword : MonoBehaviour
     public void OnClick_InputPassword()
     {
         CheckPassword(inputPassword.text);
-        print(inputPassword.text);
     }
 
     public void Onclick_CancelPassword()

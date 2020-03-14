@@ -19,16 +19,28 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         get { return _roomListingButtons; }
     }
     public Lobby_CreateRoom Lobby_CreateRoom;
-    
+
+    private List<string> RoomNames = new List<string>();
+    List<RoomListing> removeRooms = new List<RoomListing>();
+
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         foreach (RoomInfo room in roomList)
         {
-            RoomReceived(room);
+            if (!room.RemovedFromList)
+                RoomReceived(room);            
+        }
+        foreach (RoomListing roomListing in RoomListingButtons)
+        {
+            if (!roomListing.isContain(roomList))
+            {
+                removeRooms.Add(roomListing);
+            }
         }
         RemoveOldRooms();
     }
 
+    
     private void RoomReceived(RoomInfo room)
     {
         int index = RoomListingButtons.FindIndex(x => x.RoomName == room.Name);
@@ -49,31 +61,23 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         if (index != -1)
         {
             RoomListing roomListing = RoomListingButtons[index];
-            ExitGames.Client.Photon.Hashtable hashtable = room.CustomProperties;
-            roomListing.ChangeRoomInfo(room.Name, (string)hashtable["Password"], (string)hashtable["MasterName"], room.PlayerCount, room.MaxPlayers, (string)hashtable["Betting"]);
+            roomListing.CustomRoomProperty = room.CustomProperties;
+            roomListing.room = room;
+            RoomNames.Add(roomListing.RoomNameText.text);
             roomListing.Updated = true;
         }
     }
 
-    [PunRPC]
-    public void RemoveOldRooms()
+    private void RemoveOldRooms()
     {
-        List<RoomListing> removeRooms = new List<RoomListing>();
 
-        foreach (RoomListing roomListing in RoomListingButtons)
-        {
-            if (!roomListing.Updated)
-                removeRooms.Add(roomListing);
-            else
-                roomListing.Updated = false;
-        }
         foreach (RoomListing roomListing in removeRooms)
         {
-            GameObject roomListingObj = roomListing.gameObject;
             RoomListingButtons.Remove(roomListing);
-            Destroy(roomListing);
+            Destroy(roomListing.gameObject);
         }
-
+        removeRooms.Clear();
 
     }
+
 }

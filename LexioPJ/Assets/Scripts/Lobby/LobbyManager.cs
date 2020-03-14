@@ -19,6 +19,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private static LobbyManager instance;
     public GameObject passwordChecker;
     InputField inputPassword;
+    public Lobby_ChatService Lobby_ChatService;
     [SerializeField]
     private RoomLayoutGroup _roomLayoutGroup;
     private RoomLayoutGroup RoomLayoutGroup
@@ -39,13 +40,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomOptions.CustomRoomProperties.Add("Password", password);
         roomOptions.CustomRoomProperties.Add("MasterName", PhotonNetwork.LocalPlayer.NickName);
         roomOptions.CustomRoomProperties.Add("Betting", betting);
-
-        roomOptions.CustomRoomPropertiesForLobby = new string[] {"RoomName", "Password", "MasterName", "Betting" };
+        roomOptions.CustomRoomProperties.Add("PlayerCount", 1);
+        roomOptions.CustomRoomProperties.Add("MaxPlayer", maxCount);
+        roomOptions.CustomRoomProperties.Add("State", "대기");
+        roomOptions.CustomRoomPropertiesForLobby = new string[] {"RoomName", "Password", "MasterName", "Betting", "PlayerCount", "MaxPlayer", "State" };
         roomOptions.PublishUserId = true;
 
         if (PhotonNetwork.CreateRoom(roomName, roomOptions, TypedLobby.Default))
         {
-            print("Create Room success");
+            print("Create Room success");         
         }
 
     }
@@ -70,6 +73,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        Lobby_ChatService.DisConnectChannel();
         PhotonNetwork.LoadLevel("Room");
     }
 

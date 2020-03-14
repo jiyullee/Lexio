@@ -25,6 +25,8 @@ public class Lobby_CreateRoom : MonoBehaviour
     }
     public void OnClick_CreateRoom()
     {
+        if (roomName.text == "")
+            return;
         string bettingAmount = "";
 
         if (betting.value == 0)
@@ -37,7 +39,7 @@ public class Lobby_CreateRoom : MonoBehaviour
             bettingAmount = "10만원";
         else if (betting.value == 4)
             bettingAmount = "100만원";
-
+        
         LobbyManager.Instance.OnClick_CreateRoom(roomName.text, passWord.text, playerCount.value + 2, bettingAmount);
         roomName.text = "";
         passWord.text = "";
