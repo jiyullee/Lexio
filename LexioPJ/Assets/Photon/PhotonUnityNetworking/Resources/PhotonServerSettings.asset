@@ -72,5 +72,6 @@ MonoBehaviour:
   - RPC_DestroyPlayer
   - RPC_RemovePlayer
   - RPC_DisConnectChatChannel
+  - RPC_SetColor
   DisableAutoOpenWizard: 1
   ShowSettings: 1

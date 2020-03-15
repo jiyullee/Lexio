@@ -1,10 +1,11 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Random = System.Random;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public GameObject[] playerListObj;
@@ -16,6 +17,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public Room_ChatService Room_ChatService;
     void Start()
     {
+        RoomInfo room = PhotonNetwork.CurrentRoom;
+        room.CustomProperties.Remove("State");
+        room.CustomProperties.Add("State", "대기");
 
         if (!PhotonNetwork.IsMasterClient)
         {
@@ -31,7 +35,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
         SpawnPlayer();
         Room_ChangeRoomInfo.ChangeRoomNameText();
-
+        Random r = new Random(Guid.NewGuid().GetHashCode());
+        ExitGames.Client.Photon.Hashtable CustomRoomProperty = new ExitGames.Client.Photon.Hashtable();
+        CustomRoomProperty.Clear();
+        CustomRoomProperty.Add("ImageRand", r.Next(0, 8));
+        PhotonNetwork.SetPlayerCustomProperties(CustomRoomProperty);
 
     }
 
@@ -99,7 +107,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         RoomInfo room = PhotonNetwork.CurrentRoom;
         room.CustomProperties.Remove("State");
         room.CustomProperties.Add("State", "게임 중");
-
+        PhotonNetwork.CurrentRoom.SetCustomProperties(room.CustomProperties);
         int playerCount = PhotonNetwork.PlayerList.Length;
 
         if(playerCount <= 2)

@@ -1,27 +1,36 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Random = System.Random;
 public class PlayerScript : MonoBehaviourPun
 {
     public GameObject myTurn;
     public GameObject WinStateObj;
     public Text playerNameText;
     public GameObject turnStateObj;
+    public Sprite[] planetSprites;
+    
+    Color[] planetColors = new Color[] { new Color(133, 131, 133, 255), new Color(231,215,148,255), new Color(0,119,255,255), new Color(221,192,139,255),
+                                                new Color(173,159,146,255), new Color(230,194,122,255), new Color(121,172,252,255), new Color(198,236,238,255)};
     [SerializeField]
     private string playerName;
     public List<Card> havingCards = new List<Card>();
     Image image;
     Color myTurnColor = Color.blue;
     bool isTurn;
+    public GameObject infoPanel;
+    public GameObject cardPanel;
     private void Start()
     {
+
         image = GetComponent<Image>();
+        
         StartCoroutine(MyTurn());
-        StartCoroutine(GameOver());
+       // StartCoroutine(GameOver());
     }
 
     IEnumerator GameOver()
@@ -52,8 +61,7 @@ public class PlayerScript : MonoBehaviourPun
     IEnumerator MyTurn()
     {
         while (true)
-        {
-            myTurn.SetActive(false);
+        {            
             yield return null;
             if(photonView.Owner == TurnManager.Instance.turnPlayer)
             {
@@ -67,11 +75,28 @@ public class PlayerScript : MonoBehaviourPun
                     myTurn.SetActive(false);
                     isTurn = false;
                 }
-                yield return new WaitForSeconds(1.0f);
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                myTurn.SetActive(true);
             }
             
 
         }
+    }
+    public void SetColor()
+    {
+        photonView.RPC("RPC_SetColor", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void RPC_SetColor()
+    {
+        int rand = (int)photonView.Owner.CustomProperties["ImageRand"];
+        myTurn.GetComponent<Image>().sprite = planetSprites[rand];
+        infoPanel.GetComponent<Image>().color = planetColors[rand];
+        cardPanel.GetComponent<Image>().color = planetColors[rand];
     }
 
     public void ClearRegisterdCards()

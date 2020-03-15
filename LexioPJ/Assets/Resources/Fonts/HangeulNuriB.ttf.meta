@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fabf2e6abb2f7bc47aea406ecc5de3df
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: HangeulNuri
+  fontNames:
+  - HangeulNuri
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b74d4bc35519c5b4abd19274336d7a9b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
