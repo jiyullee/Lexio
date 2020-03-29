@@ -7,7 +7,7 @@ using UnityEngine;
 public class GameManager_4Players : MonoBehaviour
 {
     public Canvas canvas;
-    public GameObject[] playerPrefabs;
+    public GameObject playerPrefabs;
     public Transform[] spawnPositions;
 
     private void Start()
@@ -26,16 +26,19 @@ public class GameManager_4Players : MonoBehaviour
                 if (i == 0)
                 {
                     player = PhotonNetwork.LocalPlayer;
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else
                 {
                     player = PhotonNetwork.PlayerListOthers[i - 1];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
         else if (PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[1])
@@ -47,21 +50,24 @@ public class GameManager_4Players : MonoBehaviour
                 if (i == 0)
                 {
                     player = PhotonNetwork.LocalPlayer;
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else if (i == 1 || i == 2)
                 {
                     player = PhotonNetwork.PlayerListOthers[i];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else
                 {
                     player = PhotonNetwork.PlayerListOthers[0];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
         else if (PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[2])
@@ -73,27 +79,29 @@ public class GameManager_4Players : MonoBehaviour
                 if (i == 0)
                 {
                     player = PhotonNetwork.LocalPlayer;
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else if (i == 1)
                 {
                     player = PhotonNetwork.PlayerListOthers[2];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else if(i == 2)
                 {
                     player = PhotonNetwork.PlayerListOthers[0];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else
                 {
                     player = PhotonNetwork.PlayerListOthers[1];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
-            
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
         else
@@ -105,27 +113,29 @@ public class GameManager_4Players : MonoBehaviour
                 if (i == 0)
                 {
                     player = PhotonNetwork.LocalPlayer;
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else if (i == 1)
                 {
                     player = PhotonNetwork.PlayerListOthers[0];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else if (i == 2)
                 {
                     player = PhotonNetwork.PlayerListOthers[1];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
                 else
                 {
                     player = PhotonNetwork.PlayerListOthers[2];
-                    obj = PhotonNetwork.Instantiate(playerPrefabs[i].name, spawnPositions[i].position, spawnPositions[i].rotation);
+                    obj = PhotonNetwork.Instantiate(playerPrefabs.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
-
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
     }

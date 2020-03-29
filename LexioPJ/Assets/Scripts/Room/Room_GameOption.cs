@@ -5,14 +5,30 @@ using UnityEngine.UI;
 
 public class Room_GameOption : MonoBehaviour
 {
-    public void OnClick_ChangeOption()
+    public Toggle SoundToggle;
+    public Sprite OnSound;
+    public Sprite OffSound;
+    Image image;
+    private void Start()
+    {
+        image = SoundToggle.GetComponent<Image>();
+    }
+    public void OnClick_TurnOnOffMusic()
+    {
+        if (!SoundToggle.isOn)
+        {
+            SoundManager.Instance.TurnOff_RoomBackSound();
+            image.sprite = OffSound;
+        }
+        else
+        {
+            SoundManager.Instance.TurnOn_RoomBackSound();
+            image.sprite = OnSound;
+        }
+    }
+
+    public void OnClick_DisappearPanel()
     {
         gameObject.SetActive(false);
     }
-
-    public void OnClick_DisapearPanel()
-    {
-        gameObject.SetActive(false);
-    }
-
 }

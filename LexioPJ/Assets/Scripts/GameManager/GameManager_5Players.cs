@@ -31,9 +31,12 @@ public class GameManager_5Players : MonoBehaviour
                     player = PhotonNetwork.PlayerListOthers[i - 1];
                     obj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
         else if (PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[1])
@@ -57,9 +60,12 @@ public class GameManager_5Players : MonoBehaviour
                     player = PhotonNetwork.PlayerListOthers[0];
                     obj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
         else if (PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[2])
@@ -88,9 +94,12 @@ public class GameManager_5Players : MonoBehaviour
                     player = PhotonNetwork.PlayerListOthers[1];
                     obj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
         else if (PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[3])
@@ -114,9 +123,12 @@ public class GameManager_5Players : MonoBehaviour
                     player = PhotonNetwork.PlayerListOthers[i - 2];
                     obj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
         else if (PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[4])
@@ -135,9 +147,12 @@ public class GameManager_5Players : MonoBehaviour
                     player = PhotonNetwork.PlayerListOthers[i - 1];
                     obj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPositions[i].position, spawnPositions[i].rotation);
                 }
-                obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(player.NickName);
+                obj.GetComponent<PlayerScript>().OnRegisterPanel(PhotonNetwork.PlayerList.Length, i);
+                obj.transform.SetParent(canvas.transform);               
                 obj.GetPhotonView().TransferOwnership(player);
+                obj.GetComponent<Player_UserInfo>().AccessInfo(player.NickName);
+                obj.GetComponent<PlayerScript>().SetColor();
+                obj.GetComponent<PlayerScript>().owner = player;
             }
         }
 

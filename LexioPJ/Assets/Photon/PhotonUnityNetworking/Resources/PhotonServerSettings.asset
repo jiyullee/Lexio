@@ -73,5 +73,13 @@ MonoBehaviour:
   - RPC_RemovePlayer
   - RPC_DisConnectChatChannel
   - RPC_SetColor
+  - RPC_ChangeRoomNameText
+  - RPC_Return
+  - RPC_CreateResult
+  - RPC_SetUserInfo
+  - RPC_SynchronizePlayfabID
+  - RPC_SendPlayfabId
+  - RPC_SwitchMaster
+  - RPC_SendEmoticon
   DisableAutoOpenWizard: 1
   ShowSettings: 1

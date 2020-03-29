@@ -20,10 +20,6 @@ public class SignIn_InputName : MonoBehaviour
     private string playerName;
     public InputField inputName;
 
-    private void Start()
-    {
-        LoadName();
-    }
 
     private void SaveName()
     {

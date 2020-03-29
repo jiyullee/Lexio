@@ -16,18 +16,16 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
     public InputField inputField;
     public Text outputText;
 
-    private void Start()
+    public void SetName(string s)
     {
+        userName = s;
         Application.runInBackground = true;
         //  userName = System.Environment.UserName;
-        userName = PlayerPrefs.GetString("Name");
         currentChannelName = "Lobby";
 
         chatClient = new ChatClient(this);
         chatClient.Connect("5f481764-8873-4402-a95c-7dfc0da35a4a", "1.0", new AuthenticationValues(userName));
-        //AddLine(string.Format("연결시도", userName));
     }
-
     public void AddLine(string lineString)
     {
         outputText.text += lineString + "\r\n";
@@ -112,7 +110,8 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
 
     private void Update()
     {
-        chatClient.Service();
+        if(userName != null)
+            chatClient.Service();
 
     }
     
@@ -123,6 +122,7 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
             chatClient.PublishMessage(currentChannelName, inputField.text);
             inputField.text = "";
         }
+        inputField.ActivateInputField();
     }
 }
 

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.07694017, g: 0.8584906, b: 0.55469316, a: 1}
+  m_Color: {r: 0.5071645, g: 0.8207547, b: 0.69784, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -66,8 +66,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7c9a6cf5c58f1fb4bbebdf6059dda571, type: 3}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: 5624acab258b93e46a973d7e5df6ba07, type: 3}
+    m_FontSize: 33
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "0\uC2B90\uD328"
+  m_Text: 
 --- !u!1 &1037927708857023776
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 1037927708857023774}
   - component: {fileID: 3506609677317789643}
   - component: {fileID: 9185784101832935807}
+  - component: {fileID: 5326478658512033525}
   m_Layer: 5
   m_Name: Room_Player
   m_TagString: Untagged
@@ -145,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.42745098}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.85882354}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -195,8 +196,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54f105d54ad95d4b9f43a84d175fc9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 1037927709133832674}
   masterObj: {fileID: 8183846010640912748}
+--- !u!114 &5326478658512033525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037927708857023776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02fcc37485fceb4439755b2501cea527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NickNameText: {fileID: 1037927709133832674}
+  WinLoseText: {fileID: 1037927708810290165}
+  MoneyText: {fileID: 1037927710513166398}
+  myID: 
 --- !u!1 &1037927709133832676
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -264,7 +280,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7c9a6cf5c58f1fb4bbebdf6059dda571, type: 3}
-    m_FontSize: 40
+    m_FontSize: 41
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -275,7 +291,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC774\uC774\uC774\uC774\uC9C0\uC728"
+  m_Text: 
 --- !u!1 &1037927709236646758
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.32694018, g: 0.8773585, b: 0.66161674, a: 1}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -413,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.32694018, g: 0.8773585, b: 0.66161674, a: 1}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -492,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.07694017, g: 0.8584906, b: 0.55469316, a: 1}
+  m_Color: {r: 0.5071645, g: 0.8207547, b: 0.69784, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -500,19 +516,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7c9a6cf5c58f1fb4bbebdf6059dda571, type: 3}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: 5624acab258b93e46a973d7e5df6ba07, type: 3}
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 46
+    m_MinSize: 2
+    m_MaxSize: 225
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "0\uC6D0"
+  m_Text: 
 --- !u!1 &8183846010640912748
 GameObject:
   m_ObjectHideFlags: 0

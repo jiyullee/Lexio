@@ -30,15 +30,15 @@ public class Lobby_CreateRoom : MonoBehaviour
         string bettingAmount = "";
 
         if (betting.value == 0)
-            bettingAmount = "1백원";
+            bettingAmount = "백원";
         else if (betting.value == 1)
-            bettingAmount = "1천원";
+            bettingAmount = "천원";
         else if (betting.value == 2)
-            bettingAmount = "1만원";
+            bettingAmount = "만원";
         else if (betting.value == 3)
-            bettingAmount = "10만원";
+            bettingAmount = "십만원";
         else if (betting.value == 4)
-            bettingAmount = "100만원";
+            bettingAmount = "백만원";
         
         LobbyManager.Instance.OnClick_CreateRoom(roomName.text, passWord.text, playerCount.value + 2, bettingAmount);
         roomName.text = "";

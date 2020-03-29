@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 GameObject obj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, spawnPosition.rotation);
                 obj.transform.SetParent(canvas.transform);
-                obj.GetComponent<PlayerScript>().SetPlayerName(PhotonNetwork.PlayerListOthers[playerIndex].NickName);
+                //obj.GetComponent<PlayerScript>().SetPlayerName(PhotonNetwork.PlayerListOthers[playerIndex].NickName);
                 obj.GetPhotonView().TransferOwnership(PhotonNetwork.PlayerListOthers[playerIndex]);
                 playerIndex++;
             }
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
-            Game_MainCanvasManager.Instance.GameStartButton.gameObject.SetActive(true);
+            Game_MainCanvasManager.Instance.GameOverObj.SetActive(true);
         }
     }
 
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         GameObject obj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, spawnPosition.rotation);
         obj.transform.SetParent(canvas.transform);
-        obj.GetComponent<PlayerScript>().SetPlayerName(PhotonNetwork.LocalPlayer.NickName);
+        //obj.GetComponent<PlayerScript>().SetPlayerName(PhotonNetwork.LocalPlayer.NickName);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         var spawnPosition = spawnPositions[newStartIndex++ % spawnPositions.Length];
         GameObject obj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, spawnPosition.rotation);
         obj.transform.SetParent(canvas.transform);
-        obj.GetComponent<PlayerScript>().SetPlayerName(newPlayer.NickName);
+      //  obj.GetComponent<PlayerScript>().SetPlayerName(newPlayer.NickName);
         obj.GetPhotonView().TransferOwnership(newPlayer);
     }
 

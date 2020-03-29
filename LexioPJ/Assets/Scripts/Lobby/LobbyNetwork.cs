@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using PlayFab;
+using PlayFab.ClientModels;
+using System;
 
 public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     private readonly string gameVersion = "1";
-    void Start()
+
+    private void Start()
     {
         PhotonNetwork.GameVersion = gameVersion;
-        if(!PhotonNetwork.IsConnected)
+        if (!PhotonNetwork.IsConnected)
         {
+           
             PhotonNetwork.ConnectUsingSettings();
             print("Connecting to Server");
         }
     }
-
-
     public override void OnConnectedToMaster()
     {
         print("Connected to Master");
@@ -34,4 +37,5 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         print("Connected in lobby");
     }
+
 }

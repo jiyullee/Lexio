@@ -18,28 +18,45 @@ public class Lobby_MainCanvasManager : MonoBehaviour
     public Lobby_ChatService chatService;
     public Lobby_UserInfo UserInfo;
     public Lobby_CreateRoom lobby_CreateRoom;
-    public Lobby_ChangeInfo lobby_ChangeInfo;
+    public Lobby_Charge lobby_Charge;
     public Lobby_GameRule lobby_GameRule;
+    public Lobby_OptionPanel lobby_OptionPanel;
+    public QuitGame QuitPanel;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
         {
             chatService.Input_OnEndEdit();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Quit();
+        }
     }
 
+    private void Quit()
+    {
+        QuitPanel.gameObject.SetActive(true);
+    }
     public void Onclick_AppearCreateRoomPanel()
     {
         lobby_CreateRoom.gameObject.SetActive(true);
     }
 
-    public void Onclick_AppearChangeInfoPanel()
+    public void Onclick_AppearChargePanel()
     {
-        lobby_ChangeInfo.gameObject.SetActive(true);
+        lobby_Charge.gameObject.SetActive(true);
     }
 
     public void Onclick_AppearGameRuleBtn()
     {
         lobby_GameRule.gameObject.SetActive(true);
+        lobby_GameRule.nowIndex.text = "1 / 7";
+        lobby_GameRule.panels[0].SetActive(true);
+    }
+
+    public void OnClick_AppearOptionPanel()
+    {
+        lobby_OptionPanel.gameObject.SetActive(true);
     }
 }

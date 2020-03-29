@@ -26,11 +26,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         get { return _roomLayoutGroup; }
     }
-
+    string s;
     private void Start()
     {
         inputPassword = passwordChecker.GetComponentInChildren<InputField>();
     }
+
+    
     public void OnClick_CreateRoom(string roomName,  string password, int maxCount, string betting)
     {
         RoomOptions roomOptions = new RoomOptions { IsVisible = true, IsOpen = true, MaxPlayers = (byte)maxCount };
@@ -40,7 +42,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomOptions.CustomRoomProperties.Add("Password", password);
         roomOptions.CustomRoomProperties.Add("MasterName", PhotonNetwork.LocalPlayer.NickName);
         roomOptions.CustomRoomProperties.Add("Betting", betting);
-        roomOptions.CustomRoomProperties.Add("PlayerCount", 1);
+        roomOptions.CustomRoomProperties.Add("PlayerCount", 0);
         roomOptions.CustomRoomProperties.Add("MaxPlayer", maxCount);
         roomOptions.CustomRoomProperties.Add("State", "대기");
         roomOptions.CustomRoomPropertiesForLobby = new string[] {"RoomName", "Password", "MasterName", "Betting", "PlayerCount", "MaxPlayer", "State" };
@@ -55,8 +57,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnClickJoinRoom(string roomName, bool isClose)
     {
+        s = roomName;
         if (!isClose)
-        {
+        {           
             PhotonNetwork.JoinRoom(roomName);
         }
         else
@@ -68,14 +71,22 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        base.OnJoinRandomFailed(returnCode, message);
+        print(message);
     }
 
     public override void OnJoinedRoom()
     {
+        
         Lobby_ChatService.DisConnectChannel();
         PhotonNetwork.LoadLevel("Room");
     }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        print(message);
+    }
+
+   
 
 }
 

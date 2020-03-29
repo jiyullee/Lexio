@@ -13,6 +13,13 @@ public class Room_ChangeRoomInfo : MonoBehaviourPunCallbacks
     public Dropdown betting;
     public Text RoomNameText;
     public Toggle passwordToggle;
+    public Image LockImage;
+    public Sprite Lock;
+    public Sprite UnLock;
+    private void Start()
+    {
+        
+    }
 
     private void OnEnable()
     {
@@ -21,31 +28,41 @@ public class Room_ChangeRoomInfo : MonoBehaviourPunCallbacks
         passWord.text = (string)hashtable["Password"];
         if(passWord.text == "")
         {
+            LockImage.sprite = UnLock;
             passwordToggle.isOn = false;
             passWord.interactable = false;
         }
         else
         {
+            LockImage.sprite = Lock;
             passwordToggle.isOn = true;
             passWord.interactable = true;
         }
             
     }
 
-    public void ChangeRoomNameText()
+    public void ChangeRoomName()
     {
         RoomInfo room = PhotonNetwork.CurrentRoom;
         ExitGames.Client.Photon.Hashtable hashtable = room.CustomProperties;
         if ((string)hashtable["Password"] == "")
         {
-            RoomNameText.text = string.Format("{0} [{1}인] [타일 당 {2}]", room.Name, room.MaxPlayers, (string)hashtable["Betting"]);
+            LockImage.sprite = UnLock;
+            RoomNameText.text = string.Format("{0} [{1}인] [판돈 {2}]", room.Name, room.MaxPlayers, (string)hashtable["Betting"]);
         }
         else
         {
-            RoomNameText.text = string.Format("{0} [{1}인] [타일 당 {2}] [암호 : {3}]", room.Name, room.MaxPlayers, (string)hashtable["Betting"], (string)hashtable["Password"]);
+            LockImage.sprite = Lock;
+            RoomNameText.text = string.Format("{0} [{1}인] [판돈 {2}] [암호 : {3}]", room.Name, room.MaxPlayers, (string)hashtable["Betting"], (string)hashtable["Password"]);
         }
-
+        Room_MainCanvasManager.Instance.ChangeRoomName(RoomNameText.text);
         gameObject.SetActive(false);
+    }
+
+    [PunRPC]
+    private void RPC_ChangeRoomNameText(string roomName)
+    {
+        RoomNameText.text = roomName;       
     }
 
     public void TogglePassWord()
@@ -63,15 +80,15 @@ public class Room_ChangeRoomInfo : MonoBehaviourPunCallbacks
     {
         string bettingAmount = "";
         if (betting.value == 0)
-            bettingAmount = "1백원";
+            bettingAmount = "백원";
         else if (betting.value == 1)
-            bettingAmount = "1천원";
+            bettingAmount = "천원";
         else if (betting.value == 2)
-            bettingAmount = "1만원";
+            bettingAmount = "만원";
         else if (betting.value == 3)
-            bettingAmount = "10만원";
+            bettingAmount = "십만원";
         else if (betting.value == 4)
-            bettingAmount = "100만원";
+            bettingAmount = "백만원";
         
         PhotonNetwork.CurrentRoom.MaxPlayers = (byte)(playerCount.value + 2);
          
@@ -85,10 +102,9 @@ public class Room_ChangeRoomInfo : MonoBehaviourPunCallbacks
         room.CustomProperties.Add("MaxPlayer", (int)room.MaxPlayers);
         room.CustomProperties.Add("State", "대기");
         PhotonNetwork.CurrentRoom.SetCustomProperties(room.CustomProperties);
-        ChangeRoomNameText();
-        
-        
+        ChangeRoomName();
     }
+
     public void OnClick_DisappearPanel()
     {
         playerCount.navigation = Navigation.defaultNavigation;

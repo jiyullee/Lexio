@@ -15,17 +15,15 @@ public class Room_ChatService : MonoBehaviour, IChatClientListener
     public InputField inputField;
     public Text outputText;
 
-    private void Start()
+    public void SetName(string s)
     {
+        userName = s;
         Application.runInBackground = true;
         //  userName = System.Environment.UserName;
-        userName = PlayerPrefs.GetString("Name");
         currentChannelName = PhotonNetwork.CurrentRoom.Name;
 
         chatClient = new ChatClient(this);
         chatClient.Connect("5f481764-8873-4402-a95c-7dfc0da35a4a", "1.0", new AuthenticationValues(userName));
-
-        //AddLine(string.Format("연결시도", userName));
     }
 
     public void DisConnectChannel()
@@ -89,12 +87,12 @@ public class Room_ChatService : MonoBehaviour, IChatClientListener
     {
         outputText.text = "";
         // AddLine("Welcome to Lexio world!");
-        AddLine(string.Format("{0} 방에 입장하셨습니다.", string.Join(",", currentChannelName)));
+        AddLine(string.Format("{0} 방에 입장하셨습니다.", currentChannelName));
     }
 
     public void OnUnsubscribed(string[] channels)
     {
-        AddLine(string.Format("채널 퇴장({0})", string.Join(",", channels)));
+       // AddLine(string.Format("채널 퇴장({0})", string.Join(",", channels)));
     }
 
     public void OnStatusUpdate(string user, int status, bool gotMessage, object message)
@@ -114,7 +112,8 @@ public class Room_ChatService : MonoBehaviour, IChatClientListener
 
     private void Update()
     {
-        chatClient.Service();
+        if (userName != null)
+            chatClient.Service();
 
     }
 
@@ -125,5 +124,6 @@ public class Room_ChatService : MonoBehaviour, IChatClientListener
             chatClient.PublishMessage(currentChannelName, inputField.text);
             inputField.text = "";
         }
+        inputField.ActivateInputField();
     }
 }
