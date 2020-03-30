@@ -22,6 +22,11 @@ public class Lobby_MainCanvasManager : MonoBehaviour
     public Lobby_GameRule lobby_GameRule;
     public Lobby_OptionPanel lobby_OptionPanel;
     public QuitGame QuitPanel;
+    public AudioSource buttonSound;
+    private void Awake()
+    {
+        buttonSound = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
@@ -36,20 +41,24 @@ public class Lobby_MainCanvasManager : MonoBehaviour
 
     private void Quit()
     {
+        buttonSound.Play();
         QuitPanel.gameObject.SetActive(true);
     }
     public void Onclick_AppearCreateRoomPanel()
     {
+        buttonSound.Play();
         lobby_CreateRoom.gameObject.SetActive(true);
     }
 
     public void Onclick_AppearChargePanel()
     {
+        buttonSound.Play();
         lobby_Charge.gameObject.SetActive(true);
     }
 
     public void Onclick_AppearGameRuleBtn()
     {
+        buttonSound.Play();
         lobby_GameRule.gameObject.SetActive(true);
         lobby_GameRule.nowIndex.text = "1 / 7";
         lobby_GameRule.panels[0].SetActive(true);
@@ -57,6 +66,9 @@ public class Lobby_MainCanvasManager : MonoBehaviour
 
     public void OnClick_AppearOptionPanel()
     {
+        buttonSound.Play();
         lobby_OptionPanel.gameObject.SetActive(true);
     }
+
+
 }

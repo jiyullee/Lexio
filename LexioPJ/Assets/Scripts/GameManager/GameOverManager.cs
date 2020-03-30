@@ -17,6 +17,7 @@ public class GameOverManager : MonoBehaviourPun
         }
     }
     private static GameOverManager instance;
+    public LevelLoader LevelLoader;
     public Game_UserInfo Game_UserInfo;
     public int[] havingCardCount = new int[6];
     public int[] sortedCardCount = new int[6];
@@ -63,13 +64,15 @@ public class GameOverManager : MonoBehaviourPun
         while (true)
         {
             lifeTime -= Time.deltaTime;
-            
-            if(lifeTime < 0 && PhotonNetwork.IsMasterClient)
+
+            if (lifeTime < 0 && PhotonNetwork.IsMasterClient)
             {
                 lifeTime = 0;
                 PhotonNetwork.AutomaticallySyncScene = true;
-                PhotonNetwork.LoadLevel("Room");
+                LevelLoader.LoadNextLevel("Room");
             }
+            else if (lifeTime < 0)
+                lifeTime = 0;
             lifeTimeText.text = (int)lifeTime + "초 뒤 대기실로 이동";
             yield return null;
         }

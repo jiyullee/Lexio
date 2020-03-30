@@ -29,7 +29,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public Room_ChatService Room_ChatService;
     public string[] PlayfabIDs;
     public Image RoomLock;
-
+    public LevelLoader LevelLoader;
     public void Start()
     {
         RoomInfo room = PhotonNetwork.CurrentRoom;
@@ -176,8 +176,18 @@ public class RoomManager : MonoBehaviourPunCallbacks
         obj.GetPhotonView().TransferOwnership(newPlayer);
         obj.GetComponent<Room_Player>().OnMasterSign();
         obj.GetComponent<Player_UserInfo>().AccessInfo(newPlayer.NickName);
+        StartCoroutine(EnterPlayer());
     }
+    IEnumerator EnterPlayer()
+    {
+        startBtn.gameObject.SetActive(false);
+        RoomOptBtn.gameObject.SetActive(false);
 
+        yield return new WaitForSeconds(4.0f);
+
+        startBtn.gameObject.SetActive(true);
+        RoomOptBtn.gameObject.SetActive(true);
+    }
     public void OnClick_StartGame()
     {
         int playerCount = PhotonNetwork.PlayerList.Length;
@@ -194,26 +204,26 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if (playerCount == 2)
         {
             photonView.RPC("RPC_DisConnectChatChannel", RpcTarget.All);
-            PhotonNetwork.LoadLevel("Game_2Players");
+            LevelLoader.LoadNextLevel("Game_2Players");
         }else if(playerCount == 3)
         {
             photonView.RPC("RPC_DisConnectChatChannel", RpcTarget.All);
-            PhotonNetwork.LoadLevel("Game_3Players");
+            LevelLoader.LoadNextLevel("Game_3Players");
         }
         else if (playerCount == 4)
         {
             photonView.RPC("RPC_DisConnectChatChannel", RpcTarget.All);
-            PhotonNetwork.LoadLevel("Game_4Players");
+            LevelLoader.LoadNextLevel("Game_4Players");
         }
         else if (playerCount == 5)
         {
             photonView.RPC("RPC_DisConnectChatChannel", RpcTarget.All);
-            PhotonNetwork.LoadLevel("Game_5Players");
+            LevelLoader.LoadNextLevel("Game_5Players");
         }
         else if (playerCount == 6)
         {
             photonView.RPC("RPC_DisConnectChatChannel", RpcTarget.All);
-            PhotonNetwork.LoadLevel("Game_6Players");
+            LevelLoader.LoadNextLevel("Game_6Players");
         }
 
     }

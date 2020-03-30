@@ -19,7 +19,8 @@ public class Lobby_Charge : MonoBehaviour
     }
     public void OnClick_Charge()
     {
-        if(Lobby_UserInfo.money == 0)
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
+        if (Lobby_UserInfo.money == 0)
         {
             if(Lobby_UserInfo.chargeCount > 0)
             {
@@ -56,6 +57,7 @@ public class Lobby_Charge : MonoBehaviour
 
     public void Onclick_DisappearPanel()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         remainCountText.text = "남은 횟수 : " + Lobby_UserInfo.chargeCount + "회";
         gameObject.SetActive(false);
     }

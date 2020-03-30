@@ -17,11 +17,21 @@ public class Game_OptionBtn : MonoBehaviour
     {
         if (!SoundToggle.isOn)
         {
+            AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audioSource in audioSources)
+            {
+                audioSource.mute = true;
+            }
             SoundManager.Instance.TurnOff_GameBackSound();
             image.sprite = OffSound;
         }
         else
         {
+            AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audioSource in audioSources)
+            {
+                audioSource.mute = false;
+            }
             SoundManager.Instance.TurnOn_GameBackSound();
             image.sprite = OnSound;
         }

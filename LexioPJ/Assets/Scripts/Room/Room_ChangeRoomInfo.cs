@@ -78,6 +78,7 @@ public class Room_ChangeRoomInfo : MonoBehaviourPunCallbacks
 
     public void OnClick_ChangeRoomInfo()
     {
+        Room_MainCanvasManager.Instance.buttonSound.Play();
         string bettingAmount = "";
         if (betting.value == 0)
             bettingAmount = "백원";
@@ -107,6 +108,7 @@ public class Room_ChangeRoomInfo : MonoBehaviourPunCallbacks
 
     public void OnClick_DisappearPanel()
     {
+        Room_MainCanvasManager.Instance.buttonSound.Play();
         playerCount.navigation = Navigation.defaultNavigation;
         betting.navigation = Navigation.defaultNavigation;
 

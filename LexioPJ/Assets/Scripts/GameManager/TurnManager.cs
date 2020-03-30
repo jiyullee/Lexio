@@ -140,6 +140,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
         {
             card.UnselectCard();
         }
+        photonView.RPC("RPC_PlayPassSound", RpcTarget.All);
     }
 
     public void Register()
@@ -150,16 +151,28 @@ public class TurnManager : MonoBehaviourPunCallbacks
             if (!CanRegister_New())
                 return;
             Register_new();
+            photonView.RPC("RPC_PlayCallSound", RpcTarget.All);
         }
         else
         {
             if (!CanRegister_ComPare())
                 return;
             Register_Compare();
+            photonView.RPC("RPC_PlayCallSound", RpcTarget.All);
         }
        
     }
+    [PunRPC]
+    private void RPC_PlayCallSound()
+    {
+        SoundManager.Instance.PlayCallSound();
+    }
 
+    [PunRPC]
+    private void RPC_PlayPassSound()
+    {
+        SoundManager.Instance.PlayPassSound();
+    }
     [PunRPC]
     private void RPC_Pass()
     {
@@ -173,6 +186,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
         if (passCount == PhotonNetwork.PlayerList.Length - 1)
         {
             isNewTurn = true;
+            SoundManager.Instance.PlayAllPassSound();
             Game_MainCanvasManager.Instance.AllPassObj.SetActive(true);
         }
 

@@ -25,6 +25,11 @@ public class Auth_Playfab : MonoBehaviour
     public Text id_check;
     public Text pw_check;
     private string _playFabPlayerIdCache;
+    private AudioSource buttonSound;
+    private void Awake()
+    {
+        buttonSound = GetComponent<AudioSource>();
+    }
     private void Start()
     {
         if (!(SceneManager.GetActiveScene().name == "SignIn"))
@@ -79,6 +84,7 @@ public class Auth_Playfab : MonoBehaviour
     }
     public void Login()
     {
+        buttonSound.Play();
         var request = new LoginWithPlayFabRequest { Username = id_Input.text, Password = PW_Input.text };
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnLoginFailure);
     }
@@ -153,6 +159,7 @@ public class Auth_Playfab : MonoBehaviour
 
     public void Register()
     {
+        buttonSound.Play();
         if (PWChecker.text != PW_Input.text)
         {
             PWCheckerText.text = "비밀번호가 일치하지 않습니다.";
@@ -186,6 +193,7 @@ public class Auth_Playfab : MonoBehaviour
 
     public void SetNickName()
     {
+        buttonSound.Play();
         var request = new UpdateUserTitleDisplayNameRequest { DisplayName = NickName_Input.text };
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, DisplayNameUpdateSuccess, DisplayNameUpdateFailure);
     }

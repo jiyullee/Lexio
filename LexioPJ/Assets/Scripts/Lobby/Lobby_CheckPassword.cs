@@ -31,11 +31,13 @@ public class Lobby_CheckPassword : MonoBehaviour
 
     public void OnClick_InputPassword()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         CheckPassword(inputPassword.text);
     }
 
     public void Onclick_CancelPassword()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         gameObject.SetActive(false);
     }
 }

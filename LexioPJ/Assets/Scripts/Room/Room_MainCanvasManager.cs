@@ -20,6 +20,11 @@ public class Room_MainCanvasManager : MonoBehaviourPun
     public Room_ChatService chatService;
     public QuitGame quitPanel;
     public Text RoomNameText;
+    public AudioSource buttonSound;
+    private void Awake()
+    {
+        buttonSound = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
@@ -34,16 +39,19 @@ public class Room_MainCanvasManager : MonoBehaviourPun
 
     public void Onclick_AppearRoominfo()
     {
+        buttonSound.Play();
         Room_ChangeRoomInfo.gameObject.SetActive(true);
     }
 
     public void Onclick_AppearGameOption()
     {
+        buttonSound.Play();
         Room_GameOption.gameObject.SetActive(true);
     }
 
     private void Quit()
     {
+        buttonSound.Play();
         quitPanel.gameObject.SetActive(true);
     }
 

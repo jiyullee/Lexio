@@ -25,6 +25,7 @@ public class Lobby_CreateRoom : MonoBehaviour
     }
     public void OnClick_CreateRoom()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         if (roomName.text == "")
             return;
         string bettingAmount = "";
@@ -50,6 +51,7 @@ public class Lobby_CreateRoom : MonoBehaviour
 
     public void OnClick_DisappearPanel()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         roomName.text = "";
         passWord.text = "";
         gameObject.SetActive(false);

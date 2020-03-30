@@ -17,11 +17,21 @@ public class Room_GameOption : MonoBehaviour
     {
         if (!SoundToggle.isOn)
         {
+            AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+            foreach(AudioSource audioSource in audioSources)
+            {
+                audioSource.mute = true;
+            }
             SoundManager.Instance.TurnOff_RoomBackSound();
             image.sprite = OffSound;
         }
         else
         {
+            AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audioSource in audioSources)
+            {
+                audioSource.mute = false;
+            }
             SoundManager.Instance.TurnOn_RoomBackSound();
             image.sprite = OnSound;
         }
@@ -29,6 +39,7 @@ public class Room_GameOption : MonoBehaviour
 
     public void OnClick_DisappearPanel()
     {
+        Room_MainCanvasManager.Instance.buttonSound.Play();
         gameObject.SetActive(false);
     }
 }

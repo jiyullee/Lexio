@@ -27,6 +27,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         get { return _roomLayoutGroup; }
     }
     string s;
+    public LevelLoader LevelLoader;
     private void Start()
     {
         inputPassword = passwordChecker.GetComponentInChildren<InputField>();
@@ -78,7 +79,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         
         Lobby_ChatService.DisConnectChannel();
-        PhotonNetwork.LoadLevel("Room");
+        LevelLoader.LoadNextLevel("Room");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerNetwork : MonoBehaviourPunCallbacks
 {
+    public LevelLoader LevelLoader;
     public void LeftRoom()
     {
         photonView.RPC("RPC_DestroyPlayer", RpcTarget.All, PhotonNetwork.NickName);
@@ -75,8 +76,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     }
 
     public override void OnLeftRoom()
-    {       
-        SceneManager.LoadScene("Lobby");
+    {
+        LevelLoader.LoadNextLevel("Lobby");
     }
  
 }

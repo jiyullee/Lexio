@@ -81,5 +81,7 @@ MonoBehaviour:
   - RPC_SendPlayfabId
   - RPC_SwitchMaster
   - RPC_SendEmoticon
+  - RPC_PlayCallSound
+  - RPC_PlayPassSound
   DisableAutoOpenWizard: 1
   ShowSettings: 1

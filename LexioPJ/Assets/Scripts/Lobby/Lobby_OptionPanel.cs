@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Lobby_OptionPanel : MonoBehaviour
 {
+    public LevelLoader LevelLoader;
     public Toggle SoundToggle;
     public Sprite OnSound;
     public Sprite OffSound;
@@ -19,11 +20,21 @@ public class Lobby_OptionPanel : MonoBehaviour
     {
         if (!SoundToggle.isOn)
         {
+            AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audioSource in audioSources)
+            {
+                audioSource.mute = true;
+            }
             SoundManager.Instance.TurnOff_LobbyBackSound();
             image.sprite = OffSound;
         }
         else
         {
+            AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audioSource in audioSources)
+            {
+                audioSource.mute = false;
+            }
             SoundManager.Instance.TurnOn_LobbyBackSound();
             image.sprite = OnSound;
         }
@@ -31,13 +42,15 @@ public class Lobby_OptionPanel : MonoBehaviour
 
     public void OnClick_DisappearPanel()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         gameObject.SetActive(false);
     }
     public void OnClick_LogOut()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         PlayFabClientAPI.ForgetAllCredentials();
         PlayerPrefs.SetInt("AutoLogin", 0);
-        PhotonNetwork.LoadLevel("SignIn");
+        LevelLoader.LoadNextLevel("SignIn");
 
     }
 }

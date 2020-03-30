@@ -41,6 +41,13 @@ public class Game_MainCanvasManager : MonoBehaviourPun
     public Sprite BackGround;
     public Text LastTurnText;
     GameObject[] sortedCards;
+
+    public AudioSource buttonSound;
+
+    private void Awake()
+    {
+        buttonSound = GetComponent<AudioSource>();
+    }
     public void SetLastTurnText(string s, int n)
     {
         photonView.RPC("RPC_SetLastTurnText", RpcTarget.All, s, n);
@@ -220,6 +227,7 @@ public class Game_MainCanvasManager : MonoBehaviourPun
 
     public void OnClick_SortedByNum()
     {
+        buttonSound.Play();
         Card[] sortedCards = cardContainer.Slots;
 
         foreach (Card card  in sortedCards)
@@ -253,6 +261,7 @@ public class Game_MainCanvasManager : MonoBehaviourPun
 
     public void OnClick_SortedByShape()
     {
+        buttonSound.Play();
         Card[] sortedCards = cardContainer.Slots;
 
         foreach (Card card in sortedCards)

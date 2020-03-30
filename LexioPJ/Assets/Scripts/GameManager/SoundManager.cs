@@ -21,6 +21,9 @@ public class SoundManager : MonoBehaviour
     public AudioSource RoomBackSound;
     public AudioSource GameBackSound;
     public AudioClip[] RoomBackSounds;
+    public AudioSource PassSound;
+    public AudioSource CallSound;
+    public AudioSource AllPassSound;
     private void Start()
     {
         if(SceneManager.GetActiveScene().name == "Room")
@@ -58,5 +61,19 @@ public class SoundManager : MonoBehaviour
     public void TurnOff_GameBackSound()
     {
         GameBackSound.Pause();
+    }
+
+    public void PlayPassSound()
+    {
+        PassSound.Play();
+    }
+
+    public void PlayCallSound()
+    {
+        CallSound.Play();
+    }
+    public void PlayAllPassSound()
+    {
+        AllPassSound.Play();
     }
 }

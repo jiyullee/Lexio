@@ -23,6 +23,7 @@ public class Lobby_GameRule : MonoBehaviour
     }
     public void OnClick_NextPanel()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         index++;
         if (index >= panels.Length)
             index = panels.Length - 1;
@@ -33,6 +34,7 @@ public class Lobby_GameRule : MonoBehaviour
     }
     public void OnClick_PreviousPanel()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         index--;
         if (index <= 0)
             index = 0;
@@ -43,6 +45,7 @@ public class Lobby_GameRule : MonoBehaviour
     }
     public void OnClick_DisappearPanel()
     {
+        Lobby_MainCanvasManager.Instance.buttonSound.Play();
         gameObject.SetActive(false);
     }
 }
