@@ -87,11 +87,11 @@ public class TurnManager : MonoBehaviourPunCallbacks
                 Game_MainCanvasManager.Instance.GameResult.SetActive(true);
                 if(HavingCardCount == 0)
                 {
-                    Game_MainCanvasManager.Instance.GameResult.GetComponentInChildren<Text>().text = "승리";
+                    Game_MainCanvasManager.Instance.GameResultText.text = "승리";
                 }
                 else
                 {
-                    Game_MainCanvasManager.Instance.GameResult.GetComponentInChildren<Text>().text = "패배";
+                    Game_MainCanvasManager.Instance.GameResultText.text = "패배";
                 }
                yield return new WaitForSeconds(3.0f);
                 PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);

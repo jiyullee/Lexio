@@ -3745,6 +3745,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7ba4bd4dc041b6b4589459b1c1c79db5, type: 3}
   BackGround: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   LastTurnText: {fileID: 545814344}
+  GameResultText: {fileID: 1657288778}
   buttonSound: {fileID: 1309311956}
 --- !u!114 &1309311955
 MonoBehaviour:
@@ -4899,6 +4900,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3755576766282718317, guid: 285716bfccb487b469a6f0b6f845b332,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285716bfccb487b469a6f0b6f845b332, type: 3}
 --- !u!224 &1657288776 stripped
@@ -4913,6 +4919,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1657288775}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1657288778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3755576766282718317, guid: 285716bfccb487b469a6f0b6f845b332,
+    type: 3}
+  m_PrefabInstance: {fileID: 1657288775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1699039773
 GameObject:
   m_ObjectHideFlags: 0

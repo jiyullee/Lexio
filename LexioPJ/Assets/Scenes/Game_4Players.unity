@@ -335,6 +335,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 578059830}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &578059833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3755576766282718317, guid: 285716bfccb487b469a6f0b6f845b332,
+    type: 3}
+  m_PrefabInstance: {fileID: 578059830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &603988170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1929,6 +1941,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7ba4bd4dc041b6b4589459b1c1c79db5, type: 3}
   BackGround: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   LastTurnText: {fileID: 1206627601}
+  GameResultText: {fileID: 578059833}
   buttonSound: {fileID: 1309311956}
 --- !u!114 &1309311955
 MonoBehaviour:

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AllPass : MonoBehaviour
 {
-    float lifeTime = 1.0f;
+
+    float lifeTime = 3.0f;
 
     private void OnEnable()
     {

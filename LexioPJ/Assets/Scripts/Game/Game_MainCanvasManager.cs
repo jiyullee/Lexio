@@ -40,6 +40,7 @@ public class Game_MainCanvasManager : MonoBehaviourPun
     public Sprite[] WindImages;
     public Sprite BackGround;
     public Text LastTurnText;
+    public Text GameResultText;
     GameObject[] sortedCards;
 
     public AudioSource buttonSound;
@@ -320,7 +321,7 @@ public class Game_MainCanvasManager : MonoBehaviourPun
         SwapInfo(sortedCards.ToArray());
 
     }
-    private void SwapInfo(Card[] cards)
+    private void SwapInfo_SelectionSort(Card[] cards)
     {
         for (int i = 0; i < cards.Length; i++)
         {
@@ -342,6 +343,34 @@ public class Game_MainCanvasManager : MonoBehaviourPun
                     cards[j].SetCardInfo(style1, no1);
                     cards[i].SetImage(sprite2);
                     cards[j].SetImage(sprite1);
+                }
+            }
+        }
+    }
+
+    private void SwapInfo(Card[] cards)
+    {
+        for (int i = cards.Length - 1; i  >= 0 ; i--)
+        {
+            for (int j = 0; j < i; j++)
+            {
+                if (cards[j].PosNum > cards[j + 1].PosNum)
+                {
+                    int tempNum = cards[j].PosNum;
+                    cards[j].PosNum = cards[j + 1].PosNum;
+                    cards[j + 1].PosNum = tempNum;
+
+                    int no1 = cards[j].GetNumber();
+                    string style1 = cards[j].GetStyle();
+
+                    int no2 = cards[j + 1].GetNumber();
+                    string style2 = cards[j + 1].GetStyle();
+                    Sprite sprite1 = cards[j].GetImage();
+                    Sprite sprite2 = cards[j + 1].GetImage();
+                    cards[j].SetCardInfo(style2, no2);
+                    cards[j + 1].SetCardInfo(style1, no1);
+                    cards[j].SetImage(sprite2);
+                    cards[j + 1].SetImage(sprite1);
                 }
             }
         }

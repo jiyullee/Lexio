@@ -1236,6 +1236,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7ba4bd4dc041b6b4589459b1c1c79db5, type: 3}
   BackGround: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   LastTurnText: {fileID: 1408858516}
+  GameResultText: {fileID: 5657545140410921897}
   buttonSound: {fileID: 1309311956}
 --- !u!114 &1309311955
 MonoBehaviour:
@@ -7438,6 +7439,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameResult
       objectReference: {fileID: 0}
+    - target: {fileID: 3755576766620307015, guid: 285716bfccb487b469a6f0b6f845b332,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3755576766620307008, guid: 285716bfccb487b469a6f0b6f845b332,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7543,8 +7549,25 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3755576766282718317, guid: 285716bfccb487b469a6f0b6f845b332,
+        type: 3}
+      propertyPath: m_Text
+      value: "\uC2B9\uB9AC"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285716bfccb487b469a6f0b6f845b332, type: 3}
+--- !u!114 &5657545140410921897 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3755576766282718317, guid: 285716bfccb487b469a6f0b6f845b332,
+    type: 3}
+  m_PrefabInstance: {fileID: 5657545140410921896}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5770795139247267400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9977,7 +10000,7 @@ PrefabInstance:
     - target: {fileID: 7657880044623523856, guid: dfa0222f24f20a4408b515b2c603bffa,
         type: 3}
       propertyPath: m_Text
-      value: 
+      value: "\uAC8C\uC784\uC774 \uC2DC\uC791\uB418\uC5C8\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 7657880044623523856, guid: dfa0222f24f20a4408b515b2c603bffa,
         type: 3}
