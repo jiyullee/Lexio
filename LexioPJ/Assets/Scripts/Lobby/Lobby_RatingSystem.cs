@@ -54,7 +54,10 @@ public class Lobby_RatingSystem : MonoBehaviour
         List<StatisticUpdate> listUpdate = new List<StatisticUpdate>();
         StatisticUpdate su = new StatisticUpdate();
         su.StatisticName = "WinPercent";
-        su.Value = (int)(((double)win / (win + lose)) * 100);
+        if((win + lose) == 0)       
+            su.Value = 0;
+        else
+            su.Value = (int)(((double)win / (win + lose)) * 100);
         listUpdate.Add(su);
         request.Statistics = listUpdate;
         PlayFabClientAPI.UpdatePlayerStatistics(request, result =>
@@ -121,6 +124,8 @@ public class Lobby_RatingSystem : MonoBehaviour
             List<PlayerLeaderboardEntry> temp = result.Leaderboard;
             for (int i = 0; i < temp.Count; i++)
             {
+                if (i != temp[i].Position)
+                    continue;
                 GameObject obj = Instantiate(ratingResult);
                 obj.transform.SetParent(scroll.transform);
                 obj.GetComponent<Lobby_Rating>().SetText((temp[i].Position + 1).ToString(), temp[i].DisplayName, temp[i].StatValue + "%");
@@ -147,6 +152,8 @@ public class Lobby_RatingSystem : MonoBehaviour
             List<PlayerLeaderboardEntry> temp = result.Leaderboard;
             for (int i = 0; i < temp.Count; i++)
             {
+                if (i != temp[i].Position)
+                    continue;
                 GameObject obj = Instantiate(ratingResult);
                 obj.transform.SetParent(scroll.transform);
                 obj.GetComponent<Lobby_Rating>().SetText((temp[i].Position + 1).ToString(), temp[i].DisplayName, RewriteMoneyText(temp[i].StatValue));

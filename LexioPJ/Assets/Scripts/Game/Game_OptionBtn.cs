@@ -5,18 +5,41 @@ using UnityEngine.UI;
 
 public class Game_OptionBtn : MonoBehaviour
 {
+    public static Game_OptionBtn Instance
+    {
+        get
+        {
+            if (instance == null) instance = FindObjectOfType<Game_OptionBtn>();
+
+            return instance;
+        }
+    }
+    private static Game_OptionBtn instance;
     public Toggle SoundToggle;
     public Sprite OnSound;
     public Sprite OffSound;
     Image image;
-    private void Start()
+
+    public void Awake()
     {
         image = SoundToggle.GetComponent<Image>();
+        if (PlayerPrefs.HasKey("Audio"))
+        {
+            int turnMusic = PlayerPrefs.GetInt("Audio");
+            if (turnMusic == 0)
+            {
+                image.sprite = OffSound;
+                SoundToggle.isOn = false;
+                return;
+            }
+        }
+        SoundManager.Instance.TurnOn_GameBackSound();
     }
     public void OnClick_TurnOnOffMusic()
     {
         if (!SoundToggle.isOn)
         {
+            PlayerPrefs.SetInt("Audio", 0);
             AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audioSource in audioSources)
             {
@@ -27,6 +50,7 @@ public class Game_OptionBtn : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetInt("Audio", 1);
             AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audioSource in audioSources)
             {

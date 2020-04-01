@@ -28,6 +28,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     string s;
     public LevelLoader LevelLoader;
+    
+    private void Awake()
+    {
+        Screen.SetResolution(1280, 720, true);
+    }
     private void Start()
     {
         inputPassword = passwordChecker.GetComponentInChildren<InputField>();

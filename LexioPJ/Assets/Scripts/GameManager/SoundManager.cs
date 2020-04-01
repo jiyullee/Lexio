@@ -24,14 +24,11 @@ public class SoundManager : MonoBehaviour
     public AudioSource PassSound;
     public AudioSource CallSound;
     public AudioSource AllPassSound;
-    private void Start()
-    {
-        if(SceneManager.GetActiveScene().name == "Room")
-        {
-            RoomBackSound.clip = RoomBackSounds[r.Next(0, RoomBackSounds.Length)];
-            RoomBackSound.Play();
 
-        }
+    public void SelectRoomSound()
+    {
+        RoomBackSound.clip = RoomBackSounds[r.Next(0, RoomBackSounds.Length)];
+        RoomBackSound.Play();
     }
     public void TurnOn_LobbyBackSound()
     {
@@ -74,6 +71,12 @@ public class SoundManager : MonoBehaviour
     }
     public void PlayAllPassSound()
     {
+        if (PlayerPrefs.HasKey("Audio"))
+        {
+            if (PlayerPrefs.GetInt("Audio") == 0)
+                return;
+        }
         AllPassSound.Play();
     }
+
 }

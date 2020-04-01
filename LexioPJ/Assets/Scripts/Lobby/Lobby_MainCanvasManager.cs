@@ -23,12 +23,20 @@ public class Lobby_MainCanvasManager : MonoBehaviour
     public Lobby_OptionPanel lobby_OptionPanel;
     public QuitGame QuitPanel;
     public AudioSource buttonSound;
+    TouchScreenKeyboard keyboard;
     private void Awake()
     {
         buttonSound = GetComponent<AudioSource>();
+        lobby_OptionPanel.Start_BackGroundMusic();
     }
     private void Update()
     {
+        if (chatService.inputField.isFocused)
+        {
+            if (chatService.inputField.touchScreenKeyboard.status == TouchScreenKeyboard.Status.Done)
+                chatService.Input_OnEndEdit();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
         {
             chatService.Input_OnEndEdit();

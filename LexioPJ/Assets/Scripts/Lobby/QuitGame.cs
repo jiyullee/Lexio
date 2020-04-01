@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class QuitGame : MonoBehaviour
 {
     public PlayerNetwork PlayerNetwork;
@@ -14,14 +14,19 @@ public class QuitGame : MonoBehaviour
 
     public void OnClick_CancelQuit()
     {
-        Room_MainCanvasManager.Instance.buttonSound.Play();
-        Lobby_MainCanvasManager.Instance.buttonSound.Play();
+        if(SceneManager.GetActiveScene().name == "Lobby")
+            Lobby_MainCanvasManager.Instance.buttonSound.Play();
+        else if (SceneManager.GetActiveScene().name == "room")
+            Room_MainCanvasManager.Instance.buttonSound.Play();
+        
         gameObject.SetActive(false);
     }
     public void Onclick_Quit()
     {
-        Room_MainCanvasManager.Instance.buttonSound.Play();
-        Lobby_MainCanvasManager.Instance.buttonSound.Play();
+        if (SceneManager.GetActiveScene().name == "Lobby")
+            Lobby_MainCanvasManager.Instance.buttonSound.Play();
+        else if (SceneManager.GetActiveScene().name == "Room")
+            Room_MainCanvasManager.Instance.buttonSound.Play();
         Application.Quit();
     }
 }

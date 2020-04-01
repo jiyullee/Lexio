@@ -939,7 +939,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec34bd9eb3278fd489b79e088a1df556, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7ba4bd4dc041b6b4589459b1c1c79db5, type: 3}
   BackGround: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   LastTurnText: {fileID: 1408858516}
-  buttonSound: {fileID: 0}
+  buttonSound: {fileID: 1309311956}
 --- !u!114 &1309311955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10254,6 +10254,11 @@ PrefabInstance:
     - target: {fileID: 8835462683020756054, guid: abce269d6869c8747a79d84115432fb1,
         type: 3}
       propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116990268112642148, guid: abce269d6869c8747a79d84115432fb1,
+        type: 3}
+      propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

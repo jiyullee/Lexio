@@ -39,17 +39,23 @@ public class Player_UserInfo : MonoBehaviourPun
         GetData();
     }
 
-    private string RewriteMoneyText(long n)
+    private string RewriteMoneyText(int n)
     {
         string s = "";
         string auk = "억";
         string man = "만";
         string won = "원";
 
-        long div1 = n / 100000000;
-        long rem1 = n % 100000000;
-        long div2 = rem1 / 10000;
-        long rem2 = rem1 % 10000;
+        if (n == 100000000)
+            return "1" + auk + won;
+        if (n == 10000)
+            return "1" + man + won;
+        if (n == 0)
+            return "0" + won;
+        int div1 = n / 100000000;
+        int rem1 = n % 100000000;
+        int div2 = rem1 / 10000;
+        int rem2 = rem1 % 10000;
         if (div1 > 0)
         {
             s += div1.ToString() + auk;

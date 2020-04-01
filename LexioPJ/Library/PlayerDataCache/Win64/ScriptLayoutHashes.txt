@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/syk_0/Desktop/렉시오/LexioPJ.exe
+C:/Users/syk_0/Desktop/렉시오/Lexio.exe
 SceneListBegin?
 Assets/Scenes/SignIn.unity
 Assets/Scenes/SetNickName.unity

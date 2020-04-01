@@ -28,6 +28,9 @@ public class Auth_Playfab : MonoBehaviour
     private AudioSource buttonSound;
     private void Awake()
     {
+        Screen.SetResolution(1280, 720, true);
+        if (PlayerPrefs.HasKey("Audio"))
+            PlayerPrefs.DeleteKey("Audio");
         buttonSound = GetComponent<AudioSource>();
     }
     private void Start()
@@ -84,7 +87,6 @@ public class Auth_Playfab : MonoBehaviour
     }
     public void Login()
     {
-        buttonSound.Play();
         var request = new LoginWithPlayFabRequest { Username = id_Input.text, Password = PW_Input.text };
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnLoginFailure);
     }

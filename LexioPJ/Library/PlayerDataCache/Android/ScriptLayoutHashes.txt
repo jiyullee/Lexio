@@ -271,6 +271,7 @@ e0ee4b3d4e27318934cc940a969d3d96 UnityEngine.Networking.dll:UnityEngine.Networki
 ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+364e3cd008459d079ce19ca42999b8d5 Assembly-CSharp.dll:.LevelLoader
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SelfDestroyScript
 1bc7f11c750d8fbd79c97a667f533e2d Assembly-CSharp.dll:.RoomLayoutGroup
 3dbccc5793489caad80e37a33f1d2d30 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Cockpit.Forms.LoadLevelUIForm
@@ -386,4 +387,3 @@ c656dcc13ae391b68d594cc8f9c590b0 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo
 f0c4eb24258257daca58a9939f0894d2 PhotonUnityNetworking.Demos.dll:Photon.Pun.Demo.Asteroids.LobbyTopPanel
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PokerManager
 aa545d8aa9611d722d52a0f5613ebd69 Assembly-CSharp.dll:.Game_OptionBtn
-364e3cd008459d079ce19ca42999b8d5 Assembly-CSharp.dll:.LevelLoader

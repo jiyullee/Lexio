@@ -171,7 +171,10 @@ public class PlayerScript : MonoBehaviourPunCallbacks
             obj = Mad_Emoji;
         else if (msg == "행복")
             obj = Love_Emoji;
-
+        if (Game_OptionBtn.Instance.SoundToggle.isOn)
+            obj.GetComponent<AudioSource>().mute = false;
+        else
+            obj.GetComponent<AudioSource>().mute = true;
         obj.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         obj.SetActive(false);

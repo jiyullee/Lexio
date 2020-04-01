@@ -24,9 +24,15 @@ public class Room_MainCanvasManager : MonoBehaviourPun
     private void Awake()
     {
         buttonSound = GetComponent<AudioSource>();
+        Room_GameOption.Start_BackGroundMusic();
     }
     private void Update()
     {
+        if (chatService.inputField.isFocused)
+        {
+            if (chatService.inputField.touchScreenKeyboard.status == TouchScreenKeyboard.Status.Done)
+                chatService.Input_OnEndEdit();
+        }
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
         {
             chatService.Input_OnEndEdit();

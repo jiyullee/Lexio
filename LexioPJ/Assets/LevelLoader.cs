@@ -17,9 +17,6 @@ public class LevelLoader : MonoBehaviourPun
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        if (sceneName == "Lobby")
-            SceneManager.LoadScene("Lobby");
-        else
-            PhotonNetwork.LoadLevel(sceneName);
+        PhotonNetwork.LoadLevel(sceneName);
     }
 }

@@ -186,8 +186,9 @@ public class TurnManager : MonoBehaviourPunCallbacks
         if (passCount == PhotonNetwork.PlayerList.Length - 1)
         {
             isNewTurn = true;
-            SoundManager.Instance.PlayAllPassSound();
+            
             Game_MainCanvasManager.Instance.AllPassObj.SetActive(true);
+            SoundManager.Instance.PlayAllPassSound();
         }
 
         turnIndex++;

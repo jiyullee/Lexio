@@ -46,7 +46,9 @@ public class Game_MainCanvasManager : MonoBehaviourPun
 
     private void Awake()
     {
+        Screen.SetResolution(1280, 720, true);
         buttonSound = GetComponent<AudioSource>();
+        
     }
     public void SetLastTurnText(string s, int n)
     {
