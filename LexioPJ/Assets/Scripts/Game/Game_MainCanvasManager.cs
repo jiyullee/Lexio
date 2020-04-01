@@ -30,7 +30,7 @@ public class Game_MainCanvasManager : MonoBehaviourPun
     public GameObject LastTurn;
     public GameObject AllPassObj;
     public GameObject[] RegisterPanels;
-
+    public GameObject GameResult;
     public List<Card> registerdCards = new List<Card>();
     public List<GameObject> havingCardObj = new List<GameObject>();
 

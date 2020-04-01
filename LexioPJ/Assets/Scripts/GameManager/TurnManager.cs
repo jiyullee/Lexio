@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using Photon.Pun.UtilityScripts;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviourPunCallbacks
 {
@@ -81,12 +82,21 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
             if (isGameOver)
             {
-                yield return new WaitForSeconds(3.0f);
+                Game_MainCanvasManager.Instance.PassButton.interactable = false;
+                Game_MainCanvasManager.Instance.RegisterButton.interactable = false;
+                Game_MainCanvasManager.Instance.GameResult.SetActive(true);
+                if(HavingCardCount == 0)
+                {
+                    Game_MainCanvasManager.Instance.GameResult.GetComponentInChildren<Text>().text = "승리";
+                }
+                else
+                {
+                    Game_MainCanvasManager.Instance.GameResult.GetComponentInChildren<Text>().text = "패배";
+                }
+               yield return new WaitForSeconds(3.0f);
                 PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
                 Game_MainCanvasManager.Instance.GameOverObj.SetActive(true);
                 photonView.RPC("RPC_Return", RpcTarget.All, PlayerIndex, HavingCardCount, PhotonNetwork.LocalPlayer.NickName);                
-                Game_MainCanvasManager.Instance.PassButton.interactable = false;
-                Game_MainCanvasManager.Instance.RegisterButton.interactable = false;
                 
                 break;
             }
@@ -95,6 +105,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
                 Game_MainCanvasManager.Instance.LastTurn.SetActive(true);
                 Game_MainCanvasManager.Instance.GameOverObj.SetActive(false);
             }
+
         }
     }
 
