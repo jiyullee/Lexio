@@ -175,6 +175,22 @@ public class PokerManager : MonoBehaviour
         int maxUseCard = CardManager.Instance.maxUseCard;
         int compareRank = StraightRank(comparingCards);
         int originRank = StraightRank(originCards);
+        if (isFlush(comparingCards))
+        {
+            return true;
+        }
+        if (isFullHouse(comparingCards))
+        {
+            return true;
+        }
+        if (isFourCard(comparingCards))
+        {
+            return true;
+        }
+        if (isStraightFlush(comparingCards))
+        {
+            return true;
+        }
         if (compareRank < originRank)
         {
             int max = MaxNumInCards(comparingCards);
@@ -299,11 +315,24 @@ public class PokerManager : MonoBehaviour
     {
         if (!isFlush(comparingCards))
             return false;
+        
         int maxUseCard = CardManager.Instance.maxUseCard;
 
         int maxOrigin = MaxNumInCards(originCards);
         int maxCompare = MaxNumInCards(comparingCards);
 
+        if (isFullHouse(comparingCards))
+        {
+            return true;
+        }
+        if (isFourCard(comparingCards))
+        {
+            return true;
+        }
+        if (isStraightFlush(comparingCards))
+        {
+            return true;
+        }
         if (maxCompare > maxOrigin)
         {
             TurnManager.Instance.SetLastTurnInt(maxCompare);
@@ -341,6 +370,15 @@ public class PokerManager : MonoBehaviour
         else if (sortedByNum_Origin[2] == 2)
             sortedByNum_Origin[2] += maxUseCard;
 
+
+        if (isFourCard(comparingCards))
+        {
+            return true;
+        }
+        if (isStraightFlush(comparingCards))
+        {
+            return true;
+        }
         if (sortedByNum_Compare[2] > sortedByNum_Origin[2])
         {
             if (sortedByNum_Compare[2] == maxUseCard)
@@ -370,6 +408,11 @@ public class PokerManager : MonoBehaviour
         else if (sortedByNum_Origin[2] == 2)
             sortedByNum_Origin[2] += maxUseCard;
 
+
+        if (isStraightFlush(comparingCards))
+        {
+            return true;
+        }
         if (sortedByNum_Compare[2] > sortedByNum_Origin[2])
         {
             if (sortedByNum_Compare[2] == maxUseCard)

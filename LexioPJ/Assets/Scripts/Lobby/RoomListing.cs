@@ -26,11 +26,11 @@ public class RoomListing : MonoBehaviourPunCallbacks
     public int MaxPlayerCount { get; private set; }
     public int CurrentPlayerCount { get; private set; }
     public bool Updated { get; set; }
-
+    Button button;
     void Start()
     {
         LockImage = Lock.GetComponent<Image>();
-        Button button = GetComponent<Button>();
+        button = GetComponent<Button>();
         button.onClick.AddListener(() => LobbyManager.Instance.OnClickJoinRoom(RoomNameText.text, isClose));
     }
 
@@ -70,12 +70,15 @@ public class RoomListing : MonoBehaviourPunCallbacks
         if (CustomRoomProperty.ContainsKey("State"))
         {
             StateText.text = (string)CustomRoomProperty["State"];
+            if((string)CustomRoomProperty["State"] == "게임 중")            
+                button.interactable = false;
+            else
+                button.interactable = true;
         }
     }
 
     private void OnDestroy()
-    {
-        Button button = GetComponent<Button>();
+    {       
         button.onClick.RemoveAllListeners();
     }
 

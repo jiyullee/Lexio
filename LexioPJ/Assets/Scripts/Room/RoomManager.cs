@@ -42,6 +42,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         room.CustomProperties.Add("PlayerCount", (int)PhotonNetwork.CurrentRoom.PlayerCount);    
         room.CustomProperties.Remove("State");
         room.CustomProperties.Add("State", "대기");
+        PhotonNetwork.CurrentRoom.IsVisible = true;
         PhotonNetwork.CurrentRoom.SetCustomProperties(room.CustomProperties);
         if (room.CustomProperties.ContainsKey("Restart"))
         {
@@ -181,15 +182,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
         obj.GetPhotonView().TransferOwnership(newPlayer);
         obj.GetComponent<Room_Player>().OnMasterSign();
         obj.GetComponent<Player_UserInfo>().AccessInfo(newPlayer.NickName);
-        StartCoroutine(EnterPlayer());
+        if(PhotonNetwork.IsMasterClient)
+            StartCoroutine(EnterPlayer());
     }
     IEnumerator EnterPlayer()
     {
-        startBtn.gameObject.SetActive(false);
+        startBtn.interactable = false;
 
         yield return new WaitForSeconds(3.0f);
 
-        startBtn.gameObject.SetActive(true);
+        startBtn.interactable = true;
     }
     public void OnClick_StartGame()
     {

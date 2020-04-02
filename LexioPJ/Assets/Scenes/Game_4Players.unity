@@ -609,7 +609,7 @@ MonoBehaviour:
   style: 
   styleClass: 0
   selectIcon: {fileID: 1504965247}
-  backGround: {fileID: 0}
+  backGround: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   PosNum: 0
 --- !u!114 &664702668
 MonoBehaviour:

@@ -178,27 +178,22 @@ public class Game_MainCanvasManager : MonoBehaviourPun
     private List<Card> FullHouseOrder(List<Card> cards)
     {
 
-        for (int i = 0; i < cards.Count; i++)
+        for (int i = cards.Count - 1; i >= 0; i--)
         {
-            for (int j = i; j < cards.Count; j++)
+            for (int j = 0; j < i; j++)
             {
-                if (cards[i].GetNumber() > cards[j].GetNumber())
+                if (cards[j].GetNumber() > cards[j + 1].GetNumber())
                 {
-                    Card tempCard = cards[i];
-                    cards[i] = cards[j];
-                    cards[j] = tempCard;
+                    Card tempCard = cards[j];
+                    cards[j] = cards[j + 1];
+                    cards[j + 1] = tempCard;
 
                 }
             }
         }
         if(cards[1].GetNumber() != cards[2].GetNumber())
         {
-            Card tempCard = cards[0];
-            cards[0] = cards[4];
-            cards[4] = tempCard;
-            Card tempCard2 = cards[1];
-            cards[1] = cards[3];
-            cards[3] = tempCard;
+            cards.Reverse();
         }
         return cards;
     }
@@ -206,24 +201,22 @@ public class Game_MainCanvasManager : MonoBehaviourPun
     private List<Card> FourCardOrder(List<Card> cards)
     {
 
-        for (int i = 0; i < cards.Count; i++)
+        for (int i = cards.Count - 1; i >= 0; i--)
         {
-            for (int j = i; j < cards.Count; j++)
+            for (int j = 0; j < i; j++)
             {
-                if (cards[i].GetNumber() > cards[j].GetNumber())
+                if (cards[j].GetNumber() > cards[j + 1].GetNumber())
                 {
-                    Card tempCard = cards[i];
-                    cards[i] = cards[j];
-                    cards[j] = tempCard;
+                    Card tempCard = cards[j];
+                    cards[j] = cards[j + 1];
+                    cards[j + 1] = tempCard;
 
                 }
             }
         }
         if (cards[0].GetNumber() != cards[1].GetNumber())
         {
-            Card tempCard = cards[0];
-            cards[0] = cards[4];
-            cards[4] = tempCard;
+            cards.Reverse();
         }
         return cards;
     }
