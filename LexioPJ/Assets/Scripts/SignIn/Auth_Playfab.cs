@@ -28,7 +28,7 @@ public class Auth_Playfab : MonoBehaviour
     private AudioSource buttonSound;
     private void Awake()
     {
-        Screen.SetResolution(1280, 720, true);
+        Screen.SetResolution(1280, 720, false);
         if (PlayerPrefs.HasKey("Audio"))
             PlayerPrefs.DeleteKey("Audio");
         buttonSound = GetComponent<AudioSource>();

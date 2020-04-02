@@ -334,30 +334,85 @@ public class TurnManager : MonoBehaviourPunCallbacks
         }
         else if (selectedCards.Count == 5)
         {
-            if (pokerManager.CanStraightFlush(originCards, selectedCards))
+            if (pokerManager.isStraightFlush(selectedCards))
             {
-                lastTurnStr = "스트레이트 플러시";
-                return true;
+                if (!pokerManager.isStraightFlush(originCards))
+                {
+                    lastTurnStr = "스트레이트 플러시";
+                    lastTurnInt = pokerManager.MaxNumInCards(selectedCards);
+                    return true;
+                }
+                else
+                {
+                    lastTurnStr = "스트레이트 플러시";
+                    return pokerManager.CanStraightFlush(originCards, selectedCards);
+                }
             }
-            if (pokerManager.CanFourCard(originCards, selectedCards))
+            else if (pokerManager.isFourCard(selectedCards))
             {
-                lastTurnStr = "포카드";
-                return true;
+                if (pokerManager.isStraightFlush(originCards))
+                {
+                    return false;
+                }
+                else if (pokerManager.isFullHouse(originCards) || pokerManager.isFlush(originCards) || pokerManager.isStraight(originCards))
+                {
+                    lastTurnStr = "포카드";
+                    lastTurnInt = pokerManager.MaxNumInFourCard(selectedCards);
+                    return true;
+                }
+                else
+                {
+                    lastTurnStr = "포카드";
+                    return pokerManager.CanFourCard(originCards, selectedCards);
+                }
             }
-            if (pokerManager.CanFullHouse(originCards, selectedCards))
+            else if (pokerManager.isFullHouse(selectedCards))
             {
-                lastTurnStr = "풀하우스";
-                return true;
+                if (pokerManager.isStraightFlush(originCards) || pokerManager.isFourCard(originCards))
+                {
+                    return false;
+                }
+                else if (pokerManager.isFlush(originCards) || pokerManager.isStraight(originCards))
+                {
+                    lastTurnStr = "풀하우스";
+                    lastTurnInt = pokerManager.MaxNumInFullHouse(selectedCards);
+                    return true;
+                }
+                else
+                {
+                    lastTurnStr = "풀하우스";
+                    return pokerManager.CanFullHouse(originCards, selectedCards);
+                }
             }
-            if (pokerManager.CanFlush(originCards, selectedCards))
+            else if (pokerManager.isFlush(selectedCards))
             {
-                lastTurnStr = "플러시";
-                return true;
+                if (pokerManager.isStraightFlush(originCards) || pokerManager.isFourCard(originCards) || pokerManager.isFullHouse(originCards))
+                {
+                    return false;
+                }
+                else if (pokerManager.isStraight(originCards))
+                {
+                    lastTurnStr = "플러시";
+                    lastTurnInt = pokerManager.MaxNumInCards(selectedCards);
+                    return true;
+                }
+                else
+                {
+                    lastTurnStr = "플러시";
+                    return pokerManager.CanFlush(originCards, selectedCards);
+                }
             }
-            if (pokerManager.CanStraight(originCards,selectedCards))
+            else if (pokerManager.isStraight(selectedCards))
             {
-                lastTurnStr = "스트레이트";
-                return true;
+                if (!pokerManager.isStraight(originCards))
+                {
+                    return false;
+                }
+                else
+                {
+                    lastTurnStr = "스트레이트";
+                    return pokerManager.CanStraight(originCards, selectedCards);
+                }
             }
             else
             {

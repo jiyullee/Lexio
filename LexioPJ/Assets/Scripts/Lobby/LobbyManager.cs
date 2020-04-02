@@ -31,7 +31,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     
     private void Awake()
     {
-        Screen.SetResolution(1280, 720, true);
+        Screen.SetResolution(1280, 720, false);
     }
     private void Start()
     {
