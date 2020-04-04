@@ -29,19 +29,27 @@ public class Card : MonoBehaviour
 
     public void OnClick_Select()
     {
-        if (!isSelected)
+        if (!TurnManager.Instance.CanRegister)
+            return;
+        if(TurnManager.Instance.selectedCards.Count <= 5)
         {
-            selectIcon.SetActive(true);
-            TurnManager.Instance.SelectCard(this);
-            isSelected = true;
-        }
-        else
-        {
-            selectIcon.SetActive(false);
-            TurnManager.Instance.UnSelectCard(this);
-            isSelected = false;
+            if (!isSelected)
+            {
+                if (TurnManager.Instance.selectedCards.Count == 5)
+                    return;
+                selectIcon.SetActive(true);
+                TurnManager.Instance.SelectCard(this);
+                isSelected = true;
+            }
+            else
+            {
+                selectIcon.SetActive(false);
+                TurnManager.Instance.UnSelectCard(this);
+                isSelected = false;
 
+            }
         }
+        
             
     }
 

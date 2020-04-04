@@ -142,13 +142,13 @@ public class Auth_Playfab : MonoBehaviour
         string nickname = obj.AccountInfo.TitleInfo.DisplayName;
         if (nickname == null)
         {
-            PhotonNetwork.LoadLevel("SetNickName");
+            SceneManager.LoadScene("SetNickName");
         }
         else
         {
             PlayerPrefs.SetString("Nickname", nickname);
-            
-            PhotonNetwork.LoadLevel("Lobby");
+
+            SceneManager.LoadScene("Lobby");
         }
     }
 
@@ -208,7 +208,7 @@ public class Auth_Playfab : MonoBehaviour
     private void DisplayNameUpdateSuccess(UpdateUserTitleDisplayNameResult obj)
     {
         ErrorText.text = "닉네임 생성 성공";
-        PhotonNetwork.LoadLevel("Lobby");
+        SceneManager.LoadScene("Lobby");
     }
 
 }

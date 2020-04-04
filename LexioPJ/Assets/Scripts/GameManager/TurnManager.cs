@@ -318,7 +318,6 @@ public class TurnManager : MonoBehaviourPunCallbacks
 
         if (selectedCards.Count == 1)
         {
-            print(1);
             lastTurnStr = "싱글";
             return pokerManager.CanOne(originCards, selectedCards);
         }
@@ -394,6 +393,10 @@ public class TurnManager : MonoBehaviourPunCallbacks
                 {
                     lastTurnStr = "플러시";
                     lastTurnInt = pokerManager.MaxNumInCards(selectedCards);
+                    if(lastTurnInt != CardManager.Instance.maxUseCard)
+                    {
+                        lastTurnInt = lastTurnInt % CardManager.Instance.maxUseCard;
+                    }
                     return true;
                 }
                 else

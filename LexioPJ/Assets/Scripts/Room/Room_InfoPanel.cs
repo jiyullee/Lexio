@@ -76,6 +76,11 @@ public class Room_InfoPanel : MonoBehaviourPun
                 WinLoseText.text = string.Format("{0}승 {1}패", win, lose);
                 MoneyText.text = RewriteMoneyText(money);
                 NickNameText.text = NickName;
+
+                if(money <= 0)
+                {
+                    LevelLoader.Instance.LoadNextLevel("Lobby");
+                }
             }
         }, (error) => print("데이터 불러오기 실패"));
 

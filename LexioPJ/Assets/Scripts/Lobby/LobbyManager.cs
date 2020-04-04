@@ -63,6 +63,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnClickJoinRoom(string roomName, bool isClose)
     {
+        if(Lobby_MainCanvasManager.Instance.UserInfo.money <= 0)
+        {
+            Lobby_MainCanvasManager.Instance.Onclick_AppearChargePanel();
+            return;
+        }
         s = roomName;
         if (!isClose)
         {           

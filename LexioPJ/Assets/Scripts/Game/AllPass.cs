@@ -6,9 +6,18 @@ public class AllPass : MonoBehaviour
 {
 
     public float lifeTime;
-
+    AudioSource AllPassSound;
+    private void Awake()
+    {
+        AllPassSound = GetComponent<AudioSource>();
+    }
     private void OnEnable()
     {
+        if (Game_OptionBtn.Instance.SoundToggle.isOn)
+            AllPassSound.mute = false;
+        else
+            AllPassSound.mute = true;
+        AllPassSound.Play();
         transform.SetAsLastSibling();
         PlayerScript[] playerScripts = GameObject.FindObjectsOfType<PlayerScript>();
         for (int i = 0; i < playerScripts.Length; i++)

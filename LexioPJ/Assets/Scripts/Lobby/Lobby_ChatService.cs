@@ -68,6 +68,7 @@ public class Lobby_ChatService : MonoBehaviourPun, IChatClientListener
     {
         
         AddLine("서버와의 연결이 끊어졌습니다.");
+        chatClient.Connect("5f481764-8873-4402-a95c-7dfc0da35a4a", "1.0", new AuthenticationValues(userName));
     }
 
     public void OnGetMessages(string channelName, string[] senders, object[] messages)

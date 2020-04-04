@@ -82,10 +82,10 @@ public class Lobby_UserInfo : MonoBehaviour
                 int nowDay = System.DateTime.Now.Day;
                 if (nowDay != Day)
                 {
-                    chargeCount = 10;
-                    var request1 = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "ChargeCount", "10" } } };
+                    chargeCount = 50;
+                    var request1 = new UpdateUserDataRequest() { Data = new Dictionary<string, string>() { { "ChargeCount", "50" } } };
                     PlayFabClientAPI.UpdateUserData(request1, (result1) => {
-                        Lobby_Charge.remainCountText.text = "남은 횟수 : 10회";
+                        Lobby_Charge.remainCountText.text = "남은 횟수 : 50회";
                     }, (error) => print("데이터 저장 실패"));
                 }
 
@@ -93,7 +93,7 @@ public class Lobby_UserInfo : MonoBehaviour
             else
             {
                 money = 10000;
-                chargeCount = 10;
+                chargeCount = 50;
                 SetData();
                 SetChargeCount();
             }

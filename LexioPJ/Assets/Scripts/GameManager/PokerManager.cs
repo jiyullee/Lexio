@@ -297,6 +297,7 @@ public class PokerManager : MonoBehaviour
             if (max < sortedByNum[i])
                 max = sortedByNum[i];
         }
+        
         return max;
     }
 
@@ -326,6 +327,8 @@ public class PokerManager : MonoBehaviour
        
         if (maxCompare > maxOrigin)
         {
+            if (maxCompare != maxUseCard)
+                maxCompare = maxCompare % maxUseCard;
             TurnManager.Instance.SetLastTurnInt(maxCompare);
             return true;
         }
@@ -335,6 +338,8 @@ public class PokerManager : MonoBehaviour
             int compareClass = comparingCards[0].GetStyleClass();
             if (compareClass > originClass)
             {
+                if (maxCompare != maxUseCard)
+                    maxCompare = maxCompare % maxUseCard;
                 TurnManager.Instance.SetLastTurnInt(maxCompare);
                 return true;
             }
