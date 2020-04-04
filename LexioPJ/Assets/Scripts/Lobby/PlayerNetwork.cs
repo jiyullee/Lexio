@@ -7,6 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerNetwork : MonoBehaviourPunCallbacks
 {
+    public static PlayerNetwork Instance
+    {
+        get
+        {
+            if (instance == null) instance = FindObjectOfType<PlayerNetwork>();
+
+            return instance;
+        }
+    }
+
+    private static PlayerNetwork instance;
     public LevelLoader LevelLoader;
     public void LeftRoom()
     {

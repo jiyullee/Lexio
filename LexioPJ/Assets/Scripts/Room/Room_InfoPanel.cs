@@ -79,7 +79,7 @@ public class Room_InfoPanel : MonoBehaviourPun
 
                 if(money <= 0)
                 {
-                    LevelLoader.Instance.LoadNextLevel("Lobby");
+                    PlayerNetwork.Instance.LeftRoom();
                 }
             }
         }, (error) => print("데이터 불러오기 실패"));

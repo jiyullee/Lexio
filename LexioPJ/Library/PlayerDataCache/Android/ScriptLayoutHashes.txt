@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/syk_0/Desktop/렉시오모바일/Econo_Lexio.apk
+C:/Users/syk_0/Desktop/렉시오모바일/Android_Lexio.apk
 SceneListBegin?
 Assets/Scenes/SignIn.unity
 Assets/Scenes/SetNickName.unity
