@@ -200,6 +200,7 @@ public class TurnManager : MonoBehaviourPunCallbacks
             
             Game_MainCanvasManager.Instance.AllPassObj.SetActive(true);
             SoundManager.Instance.PlayAllPassSound();
+            Game_MainCanvasManager.Instance.AllPass();
         }
 
         turnIndex++;

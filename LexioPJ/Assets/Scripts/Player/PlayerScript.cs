@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks
     public GameObject turnStateObj;
     public Sprite[] planetSprites;
     
-    Color[] planetColors = new Color[] {Color.red, new Color(1, 0.4980392f, 1,1), Color.yellow, Color.green, Color.blue, new Color(0,0, 0.50196081f,1), new Color(0.5450981f,0,1,1) };
+    Color[] planetColors = new Color[] {Color.red, new Color(1, 0.6470588f, 0,1), new Color(1, 0, 0.5506039f, 1), Color.green, Color.blue, new Color(0,0, 0.50196081f,1), new Color(0.5450981f,0,1,1) };
     [SerializeField]
     private string playerName;
     public List<Card> havingCards = new List<Card>();

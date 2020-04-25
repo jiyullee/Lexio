@@ -2813,6 +2813,66 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2179498607095967759, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498607192921814, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498607213477134, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498607921174300, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498608243706362, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498608246096110, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498608285203836, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498608369110213, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498608540959838, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498608692336328, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498608910576415, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179498609089697524, guid: a51963e0af72b844b983287fca917dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Slot
+      objectReference: {fileID: 0}
     - target: {fileID: 2179498607102725516, guid: a51963e0af72b844b983287fca917dcc,
         type: 3}
       propertyPath: Slots.Array.size
@@ -2942,66 +3002,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498607095967759, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498607192921814, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498607213477134, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498607921174300, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498608243706362, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498608246096110, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498608285203836, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498608369110213, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498608540959838, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498608692336328, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498608910576415, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2179498609089697524, guid: a51963e0af72b844b983287fca917dcc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Slot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a51963e0af72b844b983287fca917dcc, type: 3}

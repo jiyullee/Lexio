@@ -1736,7 +1736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LobbyBackSound: {fileID: 0}
   RoomBackSound: {fileID: 0}
-  GameBackSound: {fileID: 0}
+  GameBackSound: {fileID: 1298293353}
   RoomBackSounds: []
   PassSound: {fileID: 168792608}
   CallSound: {fileID: 615619362}

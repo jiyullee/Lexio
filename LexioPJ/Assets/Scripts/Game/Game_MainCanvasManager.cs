@@ -51,6 +51,12 @@ public class Game_MainCanvasManager : MonoBehaviourPun
         buttonSound = GetComponent<AudioSource>();
         
     }
+
+    public void AllPass()
+    {
+        photonView.RPC("RPC_InitializeGamePanel", RpcTarget.All);
+        photonView.RPC("RPC_SetLastTurnText", RpcTarget.All, "새로운 패를 등록하세요.");
+    }
     public void SetLastTurnText(string s, int n)
     {
         photonView.RPC("RPC_SetLastTurnText", RpcTarget.All, s, n);
